@@ -1,0 +1,106 @@
+.my-tasks-card {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .custom-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .sub-card {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sub-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .profile-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  mat-card-header {
+    background-color: #ececec;
+  }
+  
+  mat-card-content {
+    padding: 15px;
+  }
+  
+  .view-details-btn,
+  .open-task-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    margin-left: 10px; /* Space between the buttons */
+  }
+  
+  .view-details-btn {
+    background-color: #007bff; /* Blue color */
+  }
+  
+  .view-details-btn:hover {
+    background-color: #0056b3; /* Darker blue when hovered */
+  }
+  
+  .view-details-btn:focus {
+    outline: none; /* Remove the outline when focused */
+  }
+  
+  .open-task-btn {
+    background-color: #a73328; /* Green color */
+  }
+  
+  .open-task-btn:hover {
+    background-color: #882f21; /* Darker green when hovered */
+  }
+  
+  .open-task-btn:focus {
+    outline: none; /* Remove the outline when focused */
+  }
+  
+  .sub-card-content {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between the buttons and content */
+    align-items: center; /* Vertically center the buttons and text */
+    margin-top: 10px; /* Optional: Add space at the top */
+  }
+  
+  .details-card {
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .view-details-btn, .open-task-btn {
+    margin-left: 10px;
+  }
+  

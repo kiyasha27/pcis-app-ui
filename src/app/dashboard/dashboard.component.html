@@ -13,14 +13,28 @@
           </div>
         </mat-card-header>
         <mat-card-content class="sub-card-content">
-          <!-- Content for My Tasks -->
           <p>Here are your ongoing tasks...</p>
     
           <!-- Buttons in one line -->
           <div class="button-container">
-            <button mat-button class="view-details-btn" (click)="viewDetails('Hospital Bills')">View Details <mat-icon>info</mat-icon></button>
+            <button mat-button class="view-details-btn" (click)="viewDetails('Hospital Bills')">
+              View Details <mat-icon>info</mat-icon>
+            </button>
             <button mat-raised-button class="open-task-btn" (click)="openTask('Hospital Bills')">Open Task</button>
           </div>
+        </mat-card-content>
+      </mat-card>
+    
+      <!-- Details Card for Hospital Bills -->
+      <mat-card *ngIf="detailsVisibility['Hospital Bills']" class="details-card">
+        <mat-card-header>
+          <div class="profile-header">
+            <h2 class="sub-card-title">Hospital Bills - Details</h2>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Here are the details for the Hospital Bills task...</p>
+          <!-- Add more details as needed -->
         </mat-card-content>
       </mat-card>
     
@@ -32,14 +46,28 @@
           </div>
         </mat-card-header>
         <mat-card-content class="sub-card-content">
-          <!-- Content for Queued Tasks -->
           <p>These are your queued tasks...</p>
     
           <!-- Buttons in one line -->
           <div class="button-container">
-            <button mat-button class="view-details-btn" (click)="viewDetails('Medical Review')">View Details <mat-icon>info</mat-icon></button>
+            <button mat-button class="view-details-btn" (click)="viewDetails('Medical Review')">
+              View Details <mat-icon>info</mat-icon>
+            </button>
             <button mat-raised-button class="open-task-btn" (click)="openTask('Medical Review')">Open Task</button>
           </div>
+        </mat-card-content>
+      </mat-card>
+    
+      <!-- Details Card for Medical Review -->
+      <mat-card *ngIf="detailsVisibility['Medical Review']" class="details-card">
+        <mat-card-header>
+          <div class="profile-header">
+            <h2 class="sub-card-title">Medical Review - Details</h2>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Here are the details for the Medical Review task...</p>
+          <!-- Add more details as needed -->
         </mat-card-content>
       </mat-card>
     
@@ -51,15 +79,30 @@
           </div>
         </mat-card-header>
         <mat-card-content class="sub-card-content">
-          <!-- Content for Completed Tasks -->
           <p>Here are the tasks you have completed...</p>
     
           <!-- Buttons in one line -->
           <div class="button-container">
-            <button mat-button class="view-details-btn" (click)="viewDetails('Indexing Task')">View Details <mat-icon>info</mat-icon></button>
+            <button mat-button class="view-details-btn" (click)="viewDetails('Indexing Task')">
+              View Details <mat-icon>info</mat-icon>
+            </button>
             <button mat-raised-button class="open-task-btn" (click)="openTask('Indexing Task')">Open Task</button>
           </div>
         </mat-card-content>
       </mat-card>
+    
+      <!-- Details Card for Indexing Task -->
+      <mat-card *ngIf="detailsVisibility['Indexing Task']" class="details-card">
+        <mat-card-header>
+          <div class="profile-header">
+            <h2 class="sub-card-title">Indexing Task - Details</h2>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Here are the details for the Indexing Task...</p>
+          <!-- Add more details as needed -->
+        </mat-card-content>
+      </mat-card>
+    
     </mat-card>
     

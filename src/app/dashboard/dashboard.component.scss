@@ -87,3 +87,20 @@
     margin-top: 10px; /* Optional: Add space at the top */
   }
   
+  .details-card {
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .view-details-btn, .open-task-btn {
+    margin-left: 10px;
+  }
+  
