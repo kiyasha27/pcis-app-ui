@@ -1,0 +1,65 @@
+<mat-card class="my-tasks-card custom-card">
+      <mat-card-header>
+        <div class="profile-header">
+          <h1 class="profile-title">Task List</h1>
+        </div>
+      </mat-card-header>
+    
+      <!-- Sub Card 1: Hospital Bills -->
+      <mat-card class="sub-card">
+        <mat-card-header>
+          <div class="profile-header">
+            <h2 class="sub-card-title">Hospital Bills</h2>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="sub-card-content">
+          <!-- Content for My Tasks -->
+          <p>Here are your ongoing tasks...</p>
+    
+          <!-- Buttons in one line -->
+          <div class="button-container">
+            <button mat-button class="view-details-btn" (click)="viewDetails('Hospital Bills')">View Details <mat-icon>info</mat-icon></button>
+            <button mat-raised-button class="open-task-btn" (click)="openTask('Hospital Bills')">Open Task</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    
+      <!-- Sub Card 2: Medical Review -->
+      <mat-card class="sub-card">
+        <mat-card-header>
+          <div class="profile-header">
+            <h2 class="sub-card-title">Medical Review</h2>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="sub-card-content">
+          <!-- Content for Queued Tasks -->
+          <p>These are your queued tasks...</p>
+    
+          <!-- Buttons in one line -->
+          <div class="button-container">
+            <button mat-button class="view-details-btn" (click)="viewDetails('Medical Review')">View Details <mat-icon>info</mat-icon></button>
+            <button mat-raised-button class="open-task-btn" (click)="openTask('Medical Review')">Open Task</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    
+      <!-- Sub Card 3: Indexing Task -->
+      <mat-card class="sub-card">
+        <mat-card-header>
+          <div class="profile-header">
+            <h2 class="sub-card-title">Indexing Task</h2>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="sub-card-content">
+          <!-- Content for Completed Tasks -->
+          <p>Here are the tasks you have completed...</p>
+    
+          <!-- Buttons in one line -->
+          <div class="button-container">
+            <button mat-button class="view-details-btn" (click)="viewDetails('Indexing Task')">View Details <mat-icon>info</mat-icon></button>
+            <button mat-raised-button class="open-task-btn" (click)="openTask('Indexing Task')">Open Task</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-card>
+    
