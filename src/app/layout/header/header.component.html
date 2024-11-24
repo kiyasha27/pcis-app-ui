@@ -1,22 +1,32 @@
-<!-- toolbar.component.html -->
 <mat-toolbar class="custom-toolbar">
- <button
-  mat-icon-button
-  class="neumorphic-button"
-  class="example-icon"
-  aria-label="Toggle Sidebar"
-  (click)="toggleSidebar()"
->
-  <mat-icon>menu</mat-icon>
-</button>
-  &nbsp;
+  <button
+    mat-icon-button
+    class="neumorphic-button"
+    aria-label="Toggle Sidebar"
+    (click)="toggleSidebar()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
   <span>Dashboard</span>
+  
   <span class="example-spacer"></span>
- <button mat-icon-button class="notification-icon" aria-label="Notification icon button">
-  <mat-icon>notifications</mat-icon>
-</button>
-  &nbsp;
 
-<button mat-button routerLink="/profile" routerLinkActive="active" class="neumorphic-button">My Profile</button>
+  <!-- Search Bar -->
+  <mat-form-field class="search-bar" appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Search..." [(ngModel)]="searchQuery" />
+    <button mat-icon-button matSuffix (click)="clearSearch()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
 
+  <!-- Notification Icon -->
+  <button mat-icon-button class="notification-icon" aria-label="Notification icon">
+    <mat-icon>notifications</mat-icon>
+  </button>
+
+  <button mat-button routerLink="/profile" routerLinkActive="active" class="neumorphic-button">
+    My Profile
+  </button>
 </mat-toolbar>

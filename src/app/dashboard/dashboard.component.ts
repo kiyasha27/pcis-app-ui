@@ -18,11 +18,10 @@ export class DashboardComponent {
     this.detailsVisibility[taskName] = !this.detailsVisibility[taskName];
   }
 
-  // Method to open the task
-  openTask(taskName: string) {
+  openTask(taskName: string): void {
     console.log(`Opening task: ${taskName}`);
-    // Implement logic to open the task or navigate to the task page
+    window.location.href = 'http://192.168.82.62:8081/activiti-app/#/';
   }
-
+  
   
 }

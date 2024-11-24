@@ -1,6 +1,22 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+.custom-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.example-spacer {
+  flex: 1;
+}
+
+.search-bar {
+  height: 50px; 
+  width: 300px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
 
 /* toolbar.component.css */
 // .custom-toolbar {

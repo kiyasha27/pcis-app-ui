@@ -17,4 +17,15 @@ export class HeaderComponent  {
     this.sidebarService.toggleSidebar();
     // Check if the visibility state is changing
   }
+  searchQuery: string = '';
+
+  onSearch(): void {
+    console.log('Search Query:', this.searchQuery);
+    // Add logic here to handle the search, e.g., filtering a list or triggering an API call
+  }
+
+  clearSearch(): void {
+    this.searchQuery = '';
+    this.onSearch();
+  }
 }
