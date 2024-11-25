@@ -6,13 +6,40 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-   // Object to track visibility of details for each sub-card
-   detailsVisibility: { [key: string]: boolean } = {
-    'Hospital Bills': false,
-    'Medical Review': false,
-    'Indexing Task': false
-  };
-
+  hospitalBillsData = [
+    { 
+      status: 'In Progress', 
+      date: '2024-11-24', 
+      created: '2024-11-23', 
+      completed: 'Not Yet', 
+      assignee: 'John Doe' 
+    }
+  ];
+  
+  medicalReviewData = [
+    { 
+      status: 'In Progress', 
+      date: '2024-11-24', 
+      created: '2024-11-23', 
+      completed: 'Not Yet', 
+      assignee: 'John Doe' 
+    }
+  ];
+  
+  indexingTaskData = [
+    { 
+      status: 'In Progress', 
+      date: '2024-11-24', 
+      created: '2024-11-23', 
+      completed: 'Not Yet', 
+      assignee: 'John Doe' 
+    }
+  ];
+  
+  displayedColumns: string[] = ['status', 'date', 'created', 'completed', 'assignee'];
+  
+  detailsVisibility: { [key: string]: boolean } = {};
+  
   // Toggle the visibility of the details card for a specific task
   viewDetails(taskName: string): void {
     this.detailsVisibility[taskName] = !this.detailsVisibility[taskName];

@@ -1,7 +1,7 @@
 <mat-card class="my-tasks-card custom-card">
       <mat-card-header>
         <div class="profile-header">
-          <h1 class="profile-title">Task List</h1>
+          <h1 class="profile-title">My Tasks</h1>
         </div>
       </mat-card-header>
     
@@ -13,7 +13,7 @@
           </div>
         </mat-card-header>
         <mat-card-content class="sub-card-content">
-          <p>Here are your ongoing tasks...</p>
+          <p>Here is your ongoing task.</p>
     
           <!-- Buttons in one line -->
           <div class="button-container">
@@ -29,12 +29,43 @@
       <mat-card *ngIf="detailsVisibility['Hospital Bills']" class="details-card">
         <mat-card-header>
           <div class="profile-header">
-            <h2 class="sub-card-title">Hospital Bills - Details</h2>
+            <h2 class="sub-card-title">Details: Hospital Bills </h2>
           </div>
         </mat-card-header>
         <mat-card-content>
           <p>Here are the details for the Hospital Bills task...</p>
-          <!-- Add more details as needed -->
+    
+          <!-- Table with Task Info -->
+          <table mat-table [dataSource]="hospitalBillsData" class="task-details-table">
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let task">{{task.status}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let task">{{task.date}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="created">
+            <th mat-header-cell *matHeaderCellDef>Created</th>
+            <td mat-cell *matCellDef="let task">{{task.created}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="completed">
+            <th mat-header-cell *matHeaderCellDef>Completed</th>
+            <td mat-cell *matCellDef="let task">{{task.completed}}</td>
+          </ng-container>
+  
+          <ng-container matColumnDef="assignee">
+            <th mat-header-cell *matHeaderCellDef>Assignee</th>
+            <td mat-cell *matCellDef="let task">{{task.assignee}}</td>
+          </ng-container>
+      
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
         </mat-card-content>
       </mat-card>
     
@@ -46,7 +77,7 @@
           </div>
         </mat-card-header>
         <mat-card-content class="sub-card-content">
-          <p>These are your queued tasks...</p>
+          <p>Here is your ongoing task.</p>
     
           <!-- Buttons in one line -->
           <div class="button-container">
@@ -62,12 +93,42 @@
       <mat-card *ngIf="detailsVisibility['Medical Review']" class="details-card">
         <mat-card-header>
           <div class="profile-header">
-            <h2 class="sub-card-title">Medical Review - Details</h2>
+            <h2 class="sub-card-title">Details: Medical Review</h2>
           </div>
         </mat-card-header>
         <mat-card-content>
           <p>Here are the details for the Medical Review task...</p>
-          <!-- Add more details as needed -->
+    
+          <!-- Table with Task Info -->
+          <table mat-table [dataSource]="medicalReviewData" class="task-details-table">
+            <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell *matCellDef="let task">{{task.status}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef>Date</th>
+                  <td mat-cell *matCellDef="let task">{{task.date}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="created">
+                  <th mat-header-cell *matHeaderCellDef>Created</th>
+                  <td mat-cell *matCellDef="let task">{{task.created}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="completed">
+                  <th mat-header-cell *matHeaderCellDef>Completed</th>
+                  <td mat-cell *matCellDef="let task">{{task.completed}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="assignee">
+                  <th mat-header-cell *matHeaderCellDef>Assignee</th>
+                  <td mat-cell *matCellDef="let task">{{task.assignee}}</td>
+                </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
         </mat-card-content>
       </mat-card>
     
@@ -79,7 +140,7 @@
           </div>
         </mat-card-header>
         <mat-card-content class="sub-card-content">
-          <p>Here are the tasks you have completed...</p>
+          <p>Here is your ongoing task.</p>
     
           <!-- Buttons in one line -->
           <div class="button-container">
@@ -95,14 +156,43 @@
       <mat-card *ngIf="detailsVisibility['Indexing Task']" class="details-card">
         <mat-card-header>
           <div class="profile-header">
-            <h2 class="sub-card-title">Indexing Task - Details</h2><mat-icon>tasks</mat-icon>
+            <h2 class="sub-card-title">Details: Indexing Task</h2>
           </div>
         </mat-card-header>
         <mat-card-content>
           <p>Here are the details for the Indexing Task...</p>
-          <!-- Add more details as needed -->
+    
+          <!-- Table with Task Info -->
+          <table mat-table [dataSource]="indexingTaskData" class="task-details-table">
+            <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell *matCellDef="let task">{{task.status}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="date">
+                  <th mat-header-cell *matHeaderCellDef>Date</th>
+                  <td mat-cell *matCellDef="let task">{{task.date}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="created">
+                  <th mat-header-cell *matHeaderCellDef>Created</th>
+                  <td mat-cell *matCellDef="let task">{{task.created}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="completed">
+                  <th mat-header-cell *matHeaderCellDef>Completed</th>
+                  <td mat-cell *matCellDef="let task">{{task.completed}}</td>
+                </ng-container>
+        
+                <ng-container matColumnDef="assignee">
+                  <th mat-header-cell *matHeaderCellDef>Assignee</th>
+                  <td mat-cell *matCellDef="let task">{{task.assignee}}</td>
+                </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
         </mat-card-content>
       </mat-card>
-    
     </mat-card>
     

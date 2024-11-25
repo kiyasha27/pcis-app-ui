@@ -103,4 +103,47 @@
   .view-details-btn, .open-task-btn {
     margin-left: 10px;
   }
+  /* General table styling */
+.task-details-table {
+    width: 100%; /* Ensure the table spans the card width */
+    border-collapse: collapse; /* Remove gaps between table cells */
+    margin-top: 15px; /* Add some spacing above the table */
+    background-color: #f9f9f9; /* Light background color for table */
+  }
+  
+  /* Table headers */
+  .task-details-table th {
+    text-align: left; /* Align headers to the left */
+    padding: 10px; /* Add padding for a better look */
+    background-color: #00796b; /* Darker color for header row */
+    color: white; /* White text for headers */
+    font-weight: bold;
+    border: 1px solid #ccc; /* Optional: add a border for separation */
+  }
+  
+  /* Table rows */
+  .task-details-table td {
+    padding: 8px 10px; /* Add padding for cell content */
+    border: 1px solid #e0e0e0; /* Light border for cell separation */
+    color: #333; /* Default text color */
+  }
+  
+  /* Alternating row colors */
+  .task-details-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Slightly darker background for even rows */
+  }
+  
+  /* Hover effect for rows */
+  .task-details-table tr:hover {
+    background-color: #e0f7fa; /* Light teal hover color */
+  }
+  
+  /* Responsive table for smaller screens */
+  @media (max-width: 768px) {
+    .task-details-table th,
+    .task-details-table td {
+      font-size: 14px; /* Smaller font for smaller screens */
+      padding: 6px; /* Adjust padding for smaller screens */
+    }
+  }
   

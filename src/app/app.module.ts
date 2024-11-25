@@ -29,7 +29,8 @@ import { CompletedTasksComponent } from './completed-tasks/completed-tasks.compo
 import { QueuedTasksComponent } from './queued-tasks/queued-tasks.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { DocumentPageComponent } from './document-page/document-page.component';
+import { Routes } from '@angular/router';
 
 // Import FormsModule
 @NgModule({
@@ -45,6 +46,7 @@ import { MatInputModule } from '@angular/material/input';
     TimetableComponent,
     CompletedTasksComponent,
     QueuedTasksComponent,
+    DocumentPageComponent,
   ],
   imports: [
     BrowserModule,

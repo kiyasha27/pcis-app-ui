@@ -20,22 +20,22 @@
   }
 }
 .sidebar-logo {
-  text-align: center; /* Center the logo horizontally */
-  padding: 20px 0; /* Add padding above and below the logo */
+  text-align: left; /* Center the logo horizontally */
+  padding: 30px 0; /* Add padding above and below the logo */
   border-bottom: 1px solid #ddd; /* Optional: Divider for better separation */
 }
 
 .sidebar-logo img {
-  max-width: 80%; /* Resize the logo to take up 80% of the sidebar's width */
-  height: 80%; /* Maintain aspect ratio */
+  max-width: 100%; /* Resize the logo to take up 80% of the sidebar's width */
+  height: 100%; /* Maintain aspect ratio */
   border-radius: 8px; /* Optional: Rounded corners */
   margin: 0 auto; /* Center the logo inside the sidebar */
 }
 
 .sidebar {
-  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   background-color: #fff8eb;
-  width: 245px;
+  width: 250px;
   padding: 20px;
   position: fixed;
   height: 100%;
@@ -85,10 +85,11 @@
   }
 }
 
-.sub-menu {
-  padding-left: 200px; /* Adjust the value to your desired padding */
-}
 
+.sub-menu {
+  position: relative;
+  left: 30px; /* Shift to the right */// adding space before sub-meu for indentation
+}
 
 
 
