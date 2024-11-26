@@ -3,18 +3,19 @@
   <div class="sidebar-logo">
     <img src="assets/images/logo-1.png" alt="App Logo" />
   </div>  
-  
+
   <ul>
       <li>
         <a routerLink="/home" routerLinkActive="active">
           <span class="menu-icon material-icons">home</span>
-          <span class="menu-text">Home</span>
+          <span class="menu-text">HOME</span>
         </a>
+        <div class="divider"></div>
       </li>
       <li>
         <a routerLinkActive="active" (click)="toggleSubmenu()">
           <span class="menu-icon material-icons">task</span>
-          <span class="menu-text">Tasks</span>
+          <span class="menu-text">TASKS</span>
           <span class="sub-menu-icon" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }">
             <mat-icon>{{ isSubmenuOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
           </span>
@@ -29,7 +30,7 @@
       <li>
         <a routerLink="/document-page" routerLinkActive="active">
           <span class="menu-icon material-icons">folder</span>
-          <span class="menu-text">Documents</span>
+          <span class="menu-text">DOCUMENTS</span>
         </a>
       </li>
     </ul>

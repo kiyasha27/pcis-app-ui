@@ -121,8 +121,10 @@ body {
 
 .mat-mdc-icon-button{
   color: #0056b3 !important;
+  position: relative;
+  left: 16px;
+  
 }
-
 
 body {
   font-family: 'Roboto', sans-serif;
