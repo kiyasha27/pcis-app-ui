@@ -31,7 +31,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { Routes } from '@angular/router';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { HttpClientModule } from '@angular/common/http';
 // Import FormsModule
 @NgModule({
   declarations: [
@@ -65,6 +66,8 @@ import { Routes } from '@angular/router';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressBarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

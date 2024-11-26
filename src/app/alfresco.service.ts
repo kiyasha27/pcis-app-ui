@@ -6,18 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AlfrescoService {
-  private apiUrl = 'http://192.168.82.62:8080/alfresco/api/-default-/public/alfresco/versions/1';
-  private username = 'kreethram';  // Use username from environment
-  private password = 'KReethram@12'
+  private apiUrl = 'http://192.168.82.62:8080/alfresco/api/-default-/public/alfresco/versions/1/nodes/c9581665-86f8-45d5-a65e-06d58b6c38da/children';
+
+  private username = 'kreethram'; // Replace with your Alfresco username
+  private password = 'KReethram@12'; // Replace with your Alfresco password
 
   constructor(private http: HttpClient) {}
 
-  // Fetch folders from Alfresco
-  getFolders(nodeId: string): Observable<any> {
-    const url = `${this.apiUrl}/nodes/c9581665-86f8-45d5-a65e-06d58b6c38da/children`;
+  getFolders(): Observable<any> {
     const headers = new HttpHeaders({
-      Authorization: `Basic ${btoa(`${this.username}:${this.password}`)}` // Replace with your credentials
+      Authorization: `Basic ${btoa(`${this.username}:${this.password}`)}`
     });
-    return this.http.get(url, { headers });
+
+    return this.http.get<any>(this.apiUrl, { headers });
   }
 }

@@ -1,4 +1,5 @@
 <mat-toolbar class="custom-toolbar">
+  <!-- Sidebar Toggle Button -->
   <button
     mat-icon-button
     class="neumorphic-button"
@@ -8,17 +9,27 @@
     <mat-icon>menu</mat-icon>
   </button>
 
+  <!-- Dashboard Title -->
   <span>My Dashboard</span>
   
   <span class="example-spacer"></span>
 
   <!-- Notification Icon -->
-  <button mat-icon-button class="notification-icon" aria-label="Notification icon">
+  <button
+    mat-icon-button
+    class="notification-icon"
+    aria-label="Notification icon"
+  >
     <mat-icon>notifications</mat-icon>
   </button>
 
-  <button mat-button routerLink="/profile" routerLinkActive="active" class="neumorphic-button">
-    My Profile
+  <!-- Profile Button with Icon -->
+  <button
+    mat-button
+    routerLink="/profile"
+    routerLinkActive="active"
+    class="neumorphic-button profile-button"
+  >
+    <mat-icon>person</mat-icon> My Profile
   </button>
-  
 </mat-toolbar>

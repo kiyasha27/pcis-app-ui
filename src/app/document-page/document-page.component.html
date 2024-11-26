@@ -1,9 +1,10 @@
 <mat-card class="document-page">
-    <h1>View Documents</h1>
-    <p>Click the button to view the documents in the Alfresco Digital Workspace</p>
+    <h1><mat-icon>search</mat-icon> Find Documents</h1>
+    <p>Use the search bar to filter the folder results and view it's associated documents in the Alfresco Digital Workspace.</p>
   
-    <!-- Search Bar inside a card -->
-    <mat-card class="search-card">
+    <!-- Main Card for Search and Folders -->
+    <mat-card class="main-card">
+      <!-- Search Bar -->
       <div class="search-bar">
         <input
           type="text"
@@ -12,22 +13,19 @@
           class="search-input"
         />
       </div>
-    </mat-card>
-  
-    <!-- Folder List Card -->
-    <mat-card class="folder-list-card">
-      <div class="table-headings">
-        <span class="heading folder-heading">Folder Name</span>
-        <span class="heading action-heading">Action</span>
-      </div>
-  
-      <!-- Folder details loop inside individual cards -->
+
+      <!-- Folder List with Individual Cards -->
       <div *ngFor="let folder of filteredFolders()" class="folder-card">
         <mat-card class="folder-info">
           <div class="folder-details">
             <span class="folder-name">{{ folder.name }}</span>
-            <button mat-raised-button class="open-button" (click)="openFolder(folder.link)">
-              Open
+            <button
+              mat-raised-button
+              color="primary"
+              class="open-button"
+              (click)="openFolder(folder.link)"
+            >
+              <mat-icon>open_in_new</mat-icon> Open
             </button>
           </div>
         </mat-card>

@@ -7,23 +7,20 @@ import { AlfrescoService } from '../alfresco.service';
   styleUrls: ['./document-page.component.scss']
 })
 export class DocumentPageComponent {
-  
-  searchTerm: string = ''; // Variable to bind to the search input
+  displayedColumns = ['folderName', 'action'];
   folders = [
-      { name: 'Default', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 1', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/8693cc87-c637-4dc8-9fcf-132bf46e149b' },
-    { name: 'Folder 2', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/b9da19a2-f1f8-459e-8637-497c0b80d1f3' },
-    { name: 'Folder 3', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 4', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 5', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 6', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 7', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 8', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 9', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-    { name: 'Folder 10', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/ef1ed811-edaa-4364-972d-6f1b95a9216a' },
-
-    // Add more folder objects as needed
+    { name: 'Claims', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/410b8d17-5bca-456c-aabc-48ba44beaa79' },
+    { name: 'Policies', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/143eb9dd-02a6-4729-b2e1-d942faabfbc7' },
+    { name: 'Other', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/f29687c6-8be7-4522-bfa2-c75a5050ca22' },
+    { name: 'Intake', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/4f8eb3d5-75e7-4559-976f-4e0b0a94b021' },
+    { name: 'Payments', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/23031267-8273-463f-a9e4-c4ea17c47305' },
+  
   ];
+
+  openFolder(link: string): void {
+    window.open(link, '_blank'); // Open the link in a new tab
+  }
+  searchTerm: string = ''; // Variable to bind to the search input
 
   // Filtered list based on the search term
   filteredFolders() {
@@ -31,11 +28,4 @@ export class DocumentPageComponent {
       folder.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-
-
-  openFolder(link: string) {
-    // Logic to open the folder in a new tab
-    window.open(link, '_blank'); // Opens the link in a new tab
-  }
-  
 }
