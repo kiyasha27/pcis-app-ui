@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
       <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-        <!-- Content as before -->
+        <!-- Site Selection -->
         <div class="card mb-3">
           <div class="card-header">
             <h5>Select Site</h5>
@@ -25,7 +25,7 @@
           </div>
         </div>
   
-        <!-- Card for Business Level Selection -->
+        <!-- Business Level Selection -->
         <div class="card mb-3" *ngIf="showBusinessLevel">
           <div class="card-header">
             <h5>Select Business Level Folder</h5>
@@ -40,13 +40,15 @@
                 (change)="onFolderChange($event)"
               >
                 <option value="" disabled>Select a folder</option>
-                <option *ngFor="let folder of businessFolders" [value]="folder">{{ folder }}</option>
+                <option *ngFor="let folder of businessFolders" [value]="folder">
+                  {{ folder }}
+                </option>
               </select>
             </div>
           </div>
         </div>
   
-        <!-- Card for Classification Type -->
+        <!-- Classification Type -->
         <div class="card mb-3" *ngIf="showClassificationType">
           <div class="card-header">
             <h5>Select Classification Type</h5>
@@ -69,10 +71,10 @@
           </div>
         </div>
   
-        <!-- Card for Document Type -->
+        <!-- Document Type and Metadata -->
         <div class="card mb-3" *ngIf="showDocumentType">
           <div class="card-header">
-            <h5>Select Document Type</h5>
+            <h5>Select Document Type and Enter Metadata</h5>
           </div>
           <div class="card-body">
             <div class="form-group">
@@ -81,43 +83,220 @@
                 id="documentType"
                 formControlName="documentType"
                 class="form-control"
+                (change)="onDocumentTypeChange($event)"
               >
                 <option value="" disabled>Select a document type</option>
                 <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
               </select>
             </div>
+            <!-- Client Name, Client Code, and Batch -->
+    <div class="form-group">
+        <label for="clientName">Client Name:</label>
+        <input
+          type="text"
+          id="clientName"
+          formControlName="clientName"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="clientCode">Client Code:</label>
+        <input
+          type="text"
+          id="clientCode"
+          formControlName="clientCode"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <label for="batch">Batch:</label>
+        <input
+          type="text"
+          id="batch"
+          formControlName="batch"
+          class="form-control"
+        />
+      </div>
+  
+  
+            <!-- Dynamic Metadata -->
+            <ng-container *ngIf="uploadForm.controls">
+              <!-- Intake FROI Metadata -->
+              <div *ngIf="uploadForm.get('intakeId')">
+                <div class="form-group">
+                  <label for="intakeId">Intake ID:</label>
+                  <input
+                    type="text"
+                    id="intakeId"
+                    formControlName="intakeId"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="investigator">Investigator:</label>
+                  <input
+                    type="text"
+                    id="investigator"
+                    formControlName="investigator"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="disputeType">Dispute Type:</label>
+                  <input
+                    type="text"
+                    id="disputeType"
+                    formControlName="disputeType"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+  <!-- Claim Investigation Metadata -->
+<div *ngIf="uploadForm.get('investigator')">
+    <div class="form-group">
+      <label for="investigator">Investigator:</label>
+      <input
+        type="text"
+        id="investigator"
+        formControlName="investigator"
+        class="form-control"
+      />
+    </div>
+    <div class="form-group">
+      <label for="disputeType">Dispute Type:</label>
+      <input
+        type="text"
+        id="disputeType"
+        formControlName="disputeType"
+        class="form-control"
+      />
+    </div>
+  </div>
+  
+              <!-- Policy Invoice Metadata -->
+              <div *ngIf="uploadForm.get('policyName')">
+                <div class="form-group">
+                  <label for="policyName">Policy Name:</label>
+                  <input
+                    type="text"
+                    id="policyName"
+                    formControlName="policyName"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="policyNumber">Policy Number:</label>
+                  <input
+                    type="text"
+                    id="policyNumber"
+                    formControlName="policyNumber"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="policyExpirationDate">Policy Expiration Date:</label>
+                  <input
+                    type="date"
+                    id="policyExpirationDate"
+                    formControlName="policyExpirationDate"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="policyEffectiveDate">Policy Effective Date:</label>
+                  <input
+                    type="date"
+                    id="policyEffectiveDate"
+                    formControlName="policyEffectiveDate"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="itemName">Item Name:</label>
+                  <input
+                    type="text"
+                    id="itemName"
+                    formControlName="itemName"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="coverageCode">Coverage Code:</label>
+                  <input
+                    type="text"
+                    id="coverageCode"
+                    formControlName="coverageCode"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+  
+              <!-- Vendor Metadata -->
+              <div *ngIf="uploadForm.get('vendorStatus')">
+                <div class="form-group">
+                  <label for="vendorStatus">Vendor Status:</label>
+                  <input
+                    type="text"
+                    id="vendorStatus"
+                    formControlName="vendorStatus"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="vendorId">Vendor ID:</label>
+                  <input
+                    type="text"
+                    id="vendorId"
+                    formControlName="vendorId"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="vendorName">Vendor Name:</label>
+                  <input
+                    type="text"
+                    id="vendorName"
+                    formControlName="vendorName"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+  
+              <!-- Company Metadata -->
+              <div *ngIf="uploadForm.get('companyCode')">
+                <div class="form-group">
+                  <label for="companyCode">Company Code:</label>
+                  <input
+                    type="text"
+                    id="companyCode"
+                    formControlName="companyCode"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <input
+                    type="text"
+                    id="description"
+                    formControlName="description"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="companyName">Company Name:</label>
+                  <input
+                    type="text"
+                    id="companyName"
+                    formControlName="companyName"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+            </ng-container>
           </div>
         </div>
   
-        <!-- Card for Metadata -->
-        <div class="card mb-3" *ngIf="showMetadata">
-          <div class="card-header">
-            <h5>Enter Metadata</h5>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                formControlName="name"
-                class="form-control"
-              />
-            </div>
-  
-            <div class="form-group">
-              <label for="surname">Surname:</label>
-              <input
-                type="text"
-                id="surname"
-                formControlName="surname"
-                class="form-control"
-              />
-            </div>
-          </div>
-        </div>
-  
-        <!-- Card for File Upload -->
+        <!-- File Upload -->
         <div class="card mb-3" *ngIf="showFileUpload">
           <div class="card-header">
             <h3>Upload File</h3>
@@ -132,18 +311,15 @@
                 (change)="onFileSelected($event)"
               />
             </div>
+            <br />
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!uploadForm.valid || !fileToUpload"
+            >
+              Submit
+            </button>
           </div>
-        </div>
-  
-        <!-- Submit Button -->
-        <div class="form-actions">
-          <button
-            type="submit"
-            class="btn btn-primary"
-            [disabled]="uploadForm.invalid || !fileToUpload"
-          >
-            Upload
-          </button>
         </div>
       </form>
     </div>
