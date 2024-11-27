@@ -7,6 +7,7 @@ import { TimetableComponent } from './pages/timetable/timetable.component';
 import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
 import { QueuedTasksComponent } from './queued-tasks/queued-tasks.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
+import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'timetable', component: TimetableComponent },
   { path: 'completed-tasks', component: CompletedTasksComponent },
   { path: 'queued-tasks', component: QueuedTasksComponent},
-  { path: 'document-page', component: DocumentPageComponent}
+  { path: 'document-page', component: DocumentPageComponent},
+  { path: 'upload', component: UploadComponent}
 
 
 

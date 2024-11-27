@@ -33,6 +33,9 @@ import { DocumentPageComponent } from './document-page/document-page.component';
 import { Routes } from '@angular/router';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadComponent } from './upload/upload.component'; // Import the component
+import { UploadService } from './upload/upload.service'; // Import the service
+import { ReactiveFormsModule } from '@angular/forms'; // Import this module
 // Import FormsModule
 @NgModule({
   declarations: [
@@ -48,8 +51,10 @@ import { HttpClientModule } from '@angular/common/http';
     CompletedTasksComponent,
     QueuedTasksComponent,
     DocumentPageComponent,
+    UploadComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -69,7 +74,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatProgressBarModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UploadService], // Provide the service
   bootstrap: [AppComponent]
 })
 export class AppModule { }

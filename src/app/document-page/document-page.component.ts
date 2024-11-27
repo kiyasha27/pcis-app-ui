@@ -9,11 +9,10 @@ import { AlfrescoService } from '../alfresco.service';
 export class DocumentPageComponent {
   displayedColumns = ['folderName', 'action'];
   folders = [
-    { name: 'Claims', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/410b8d17-5bca-456c-aabc-48ba44beaa79' },
-    { name: 'Policies', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/143eb9dd-02a6-4729-b2e1-d942faabfbc7' },
-    { name: 'Other', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/f29687c6-8be7-4522-bfa2-c75a5050ca22' },
-    { name: 'Intake', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/4f8eb3d5-75e7-4559-976f-4e0b0a94b021' },
-    { name: 'Payments', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/23031267-8273-463f-a9e4-c4ea17c47305' },
+    { name: '254005-johns-eastern', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/0bbdc496-3220-46e0-9d60-b14bac1e879a' },
+    { name: '120287-21st-century', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/061c530c-da49-4fa6-b096-0fa26a7f771b' },
+    { name: '117420-seminole-county-school-board', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/5fb2d7b6-4f82-4cf2-bf7c-399f083ed753' },
+    { name: '117421-seminole-county-school-board', link: 'https://documentsqa.pcisvision.com/alfresco-digital-workspace-4.4.1/#/libraries/c0b4bdf6-6e83-44de-97e8-0faace811411' },
   
   ];
 
