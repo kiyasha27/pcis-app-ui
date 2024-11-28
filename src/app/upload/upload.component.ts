@@ -18,6 +18,10 @@ export class UploadComponent {
   showClassificationType: boolean = false;
   showBusinessLevel: boolean = false;
 
+  // Additional metadata fields visibility
+  showVendorFields: boolean = false;
+  showIntakeFields: boolean = false;
+
   // Dropdown options
   sites: string[] = [
     '254005-johns-eastern',
@@ -34,7 +38,7 @@ export class UploadComponent {
     'WC_Policy',
   ];
   classifications: string[] = [];
-  documentTypes: string[] = ['Vendor Withholding'];
+  documentTypes: string[] = ['Vendor Withholding', 'Intake FROI'];
 
   constructor(private uploadService: UploadService, private fb: FormBuilder) {
     this.uploadForm = this.fb.group({
@@ -45,6 +49,14 @@ export class UploadComponent {
       clientName: ['', Validators.required],
       clientCode: ['', Validators.required],
       batch: [false],
+
+      // Additional metadata fields
+      vendorName: [''], // Optional fields
+      vendorId: [''],
+      vendorStatus: [''],
+      disputeType: [''],
+      investigator: [''],
+      intakeId: [''],
     });
   }
 
@@ -91,6 +103,31 @@ export class UploadComponent {
         }
       );
   }
+
+  //map Peroperties based on which docType is selcted 
+  mapProperties(metadata: any): any {
+    const properties: any = {};
+  
+    switch (metadata.documentType) {
+      case 'VendorDocument':
+        properties['pcis:vendorName'] = metadata.vendorName;
+        properties['pcis:vendorId'] = metadata.vendorId;
+        properties['pcis:vendorStatus'] = metadata.vendorStatus;
+        break;
+  
+      case 'IntakeDocument':
+        properties['pcis:disputeType'] = metadata.disputeType;
+        properties['pcis:investigator'] = metadata.investigator;
+        properties['pcis:intakeId'] = metadata.intakeId;
+        break;
+  
+      default:
+        console.warn('Unhandled document type:', metadata.documentType);
+    }
+  
+    return properties;
+  }
+  
 
   // Handle form submission
   onSubmit(): void {
@@ -147,17 +184,37 @@ export class UploadComponent {
   // Handle document type change and set nodeType dynamically
   onDocumentTypeChange(event: any): void {
     const selectedDocType = event.target.value;
+    this.resetAdditionalFields();
+
     if (selectedDocType) {
-      // Set nodeType based on document type
+      // Set nodeType and toggle additional fields visibility
       switch (selectedDocType) {
         case 'Vendor Withholding':
           this.nodeType = 'pcis:vendor_Withholding';
+          this.showVendorFields = true;
           break;
-        // Add more cases for other document types as necessary
+        case 'Intake FROI':
+          this.nodeType = 'pcis:intake_FROI';
+          this.showIntakeFields = true;
+          break;
         default:
           this.nodeType = '';
           break;
       }
     }
+  }
+
+  // Reset additional metadata fields
+  resetAdditionalFields(): void {
+    this.showVendorFields = false;
+    this.showIntakeFields = false;
+    this.uploadForm.patchValue({
+      vendorName: '',
+      vendorId: '',
+      vendorStatus: '',
+      disputeType: '',
+      investigator: '',
+      intakeId: '',
+    });
   }
 }

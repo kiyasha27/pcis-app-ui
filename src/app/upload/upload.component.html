@@ -1,6 +1,6 @@
 <div class="card0">
   <div class="card-header">
-    <h3>Upload Document</h3>
+    <h3>1. Upload Document</h3>
   </div>
   <div class="card-body0">
     <!-- File Input -->
@@ -8,19 +8,16 @@
   </div>
 </div>
 
-<!-- Additional Sections Can Be Placed Here -->
-
 <div class="card">
   <div class="card-header">
-    <h3>Indexing Information</h3>
+    <h3>2. Please Enter Document Information Below</h3>
   </div>
   <div class="card-body">
     <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-      
       <!-- Site Selection -->
       <div class="card mb-3">
         <div class="card-header">
-          <h5>Company</h5>
+          <h5>2.1. Company</h5>
         </div>
         <div class="card-body">
           <div class="form-group">
@@ -41,7 +38,7 @@
       <!-- Business Level Selection -->
       <div class="card mb-3" *ngIf="showBusinessLevel">
         <div class="card-header">
-          <h5>Business Level</h5>
+          <h5>2.2. Business Level</h5>
         </div>
         <div class="card-body">
           <div class="form-group">
@@ -62,7 +59,7 @@
       <!-- Classification Type -->
       <div class="card mb-3" *ngIf="showClassificationType">
         <div class="card-header">
-          <h5>Classification Types</h5>
+          <h5>2.3. Classification Types</h5>
         </div>
         <div class="card-body">
           <div class="form-group">
@@ -85,7 +82,7 @@
       <!-- Document Type and Metadata -->
       <div class="card mb-3" *ngIf="showDocumentType">
         <div class="card-header">
-          <h5>Document Type and Metadata</h5>
+          <h5>2.4. Document Type and Metadata</h5>
         </div>
         <div class="card-body">
           <div class="form-group">
@@ -101,7 +98,7 @@
             </select>
           </div>
 
-          <!-- Client Name, Client Code, and Batch -->
+          <!-- Common Metadata -->
           <div class="form-group">
             <label for="clientName">Client Name:</label>
             <input
@@ -120,14 +117,67 @@
               class="form-control"
             />
           </div>
-          <div class="form-group">
-            <label for="batch">Batch:</label>
-            <input
-              type="text"
-              id="batch"
-              formControlName="batch"
-              class="form-control"
-            />
+
+          <!-- Vendor Metadata -->
+          <div *ngIf="nodeType === 'pcis:vendor_Withholding'">
+            <div class="form-group">
+              <label for="vendorName">Vendor Name:</label>
+              <input
+                type="text"
+                id="vendorName"
+                formControlName="vendorName"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="vendorId">Vendor ID:</label>
+              <input
+                type="text"
+                id="vendorId"
+                formControlName="vendorId"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="vendorStatus">Vendor Status:</label>
+              <input
+                type="text"
+                id="vendorStatus"
+                formControlName="vendorStatus"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <!-- Intake Metadata -->
+          <div *ngIf="nodeType === 'pcis:intake_FROI'">
+            <div class="form-group">
+              <label for="disputeType">Dispute Type:</label>
+              <input
+                type="text"
+                id="disputeType"
+                formControlName="disputeType"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="investigator">Investigator:</label>
+              <input
+                type="text"
+                id="investigator"
+                formControlName="investigator"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="intakeId">Intake ID:</label>
+              <input
+                type="text"
+                id="intakeId"
+                formControlName="intakeId"
+                class="form-control"
+              />
+            </div>
           </div>
         </div>
       </div>
