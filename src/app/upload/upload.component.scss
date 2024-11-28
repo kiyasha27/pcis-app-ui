@@ -4,20 +4,24 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 97%; /* Take up full width */
-height:95%; /* Ensure it takes up full width even on large screens */
+    height: 80%; /* Ensure it takes up full width even on large screens */
     margin: 20px auto;
-    background-color: #fff;
+    background-color: #ffffff; /* Light blue background */
     overflow: hidden;
     box-sizing: border-box; /* Ensure padding and borders are included in the width calculation */
   }
-  .additional-form {
-    margin-top: 20px;
-    padding: 10px;
+
+  .card0 {
     border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 97%; /* Take up full width */
+    height: 15%; /* Ensure it takes up full width even on large screens */
+    margin: 20px auto;
+    background-color: #ffffff; /* Light blue background */
+    overflow: hidden;
+    box-sizing: border-box; /* Ensure padding and borders are included in the width calculation */
   }
-  
   
   /* Card header */
   .card-header {
@@ -26,7 +30,7 @@ height:95%; /* Ensure it takes up full width even on large screens */
     border-bottom: 1px solid #ddd;
   }
   
-  .card-header h2 {
+  .card-header h3 {
     margin: 0;
     font-size: 18px;
     font-weight: 600;
@@ -88,6 +92,8 @@ height:95%; /* Ensure it takes up full width even on large screens */
   
   .btn-primary {
     background-color: #007bff;
+    position: relative;
+    left: 22px;
   }
   
   .btn-primary:hover {
@@ -96,26 +102,32 @@ height:95%; /* Ensure it takes up full width even on large screens */
   
   /* Responsive adjustments */
   @media (max-width: 600px) {
-    .card {
+    .card, .card0 {
       width: 90%; /* On small screens, the card width will take 90% of the available space */
       margin: 10px auto;
     }
   
-    .card-header h2 {
+    .card-header h3 {
       font-size: 16px;
+      background-color: #fff8eb;
     }
   
     .form-control {
       padding: 8px;
     }
   }
+  
   /* Ensure the container supports scrolling */
-.card-body {
+  .card-body {
     max-height: 70vh; /* Adjust height as needed */
     overflow-y: auto; /* Enable vertical scrolling */
     padding: 15px;
   }
-  
+  .card-body0 {
+    position: relative;
+    left: 30px;
+    padding: 15px;
+  }
   /* Make the entire form scrollable if needed */
   form {
     max-height: 80vh; /* Adjust height as needed */
@@ -131,5 +143,4 @@ height:95%; /* Ensure it takes up full width even on large screens */
     background: #007bff;
     border-radius: 4px;
   }
-  
   

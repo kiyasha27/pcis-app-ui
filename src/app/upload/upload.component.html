@@ -1,11 +1,141 @@
-<div class="upload-container">
-  <h3>Upload Document</h3>
-  <input type="file" (change)="onFileSelected($event)" />
-  <input type="text" [(ngModel)]="nodeType" placeholder="Enter nodeType" />
-  <label>
-    <input type="checkbox" [(ngModel)]="batch" />
-    Batch Upload
-  </label>
-  <input type="text" [(ngModel)]="relativePath" placeholder="Enter Relative Path" />
-  <button (click)="upload()">Upload</button>
+<div class="card0">
+  <div class="card-header">
+    <h3>Upload Document</h3>
+  </div>
+  <div class="card-body0">
+    <!-- File Input -->
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+</div>
+
+<!-- Additional Sections Can Be Placed Here -->
+
+<div class="card">
+  <div class="card-header">
+    <h3>Indexing Information</h3>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Site Selection -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5>Company</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="siteSelection">Select Company:</label>
+            <select
+              id="siteSelection"
+              formControlName="site"
+              class="form-control"
+              (change)="onSiteChange($event)"
+            >
+              <option value="" disabled>Select a Company</option>
+              <option *ngFor="let site of sites" [value]="site">{{ site }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Level Selection -->
+      <div class="card mb-3" *ngIf="showBusinessLevel">
+        <div class="card-header">
+          <h5>Business Level</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="folderSelection">Select Business Level Folder:</label>
+            <select
+              id="folderSelection"
+              formControlName="folder"
+              class="form-control"
+              (change)="onFolderChange($event)"
+            >
+              <option value="" disabled>Select a folder</option>
+              <option *ngFor="let folder of businessFolders" [value]="folder">{{ folder }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Classification Type -->
+      <div class="card mb-3" *ngIf="showClassificationType">
+        <div class="card-header">
+          <h5>Classification Types</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="classification">Select Classification Type:</label>
+            <select
+              id="classification"
+              formControlName="classification"
+              class="form-control"
+              (change)="onClassificationChange($event)"
+            >
+              <option value="" disabled>Select a classification</option>
+              <option *ngFor="let classification of classifications" [value]="classification">
+                {{ classification }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Document Type and Metadata -->
+      <div class="card mb-3" *ngIf="showDocumentType">
+        <div class="card-header">
+          <h5>Document Type and Metadata</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="documentType">Select Document Type:</label>
+            <select
+              id="documentType"
+              formControlName="documentType"
+              class="form-control"
+              (change)="onDocumentTypeChange($event)"
+            >
+              <option value="" disabled>Select a document type</option>
+              <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
+            </select>
+          </div>
+
+          <!-- Client Name, Client Code, and Batch -->
+          <div class="form-group">
+            <label for="clientName">Client Name:</label>
+            <input
+              type="text"
+              id="clientName"
+              formControlName="clientName"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="clientCode">Client Code:</label>
+            <input
+              type="text"
+              id="clientCode"
+              formControlName="clientCode"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="batch">Batch:</label>
+            <input
+              type="text"
+              id="batch"
+              formControlName="batch"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Button -->
+      <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-primary">
+        SUBMIT
+      </button>
+    </form>
+  </div>
 </div>
