@@ -32,7 +32,7 @@ export class UploadComponent {
   businessFolders: string[] = [
     'Claims',
     'Company',
-    'Intake',
+    'Intake', 
     'PAC_Policy',
     'Vendor',
     'WC_Policy',
@@ -61,9 +61,12 @@ export class UploadComponent {
   }
 
   // Handle file selection
-  onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0];
-  }
+onFileSelected(event: any): void {
+  this.selectedFile = event.target.files[0];
+  
+  // Log the selected file to the console
+  console.log('Selected file:', this.selectedFile);
+}
 
   // Generate relative path dynamically
   generateRelativePath(): string {
@@ -79,21 +82,45 @@ export class UploadComponent {
     return '';
   }
 
-  // Upload the selected file
   upload(): void {
     if (!this.selectedFile || !this.nodeType) {
       alert('Please select a file and enter a node type.');
       return;
     }
-
+  
     const relativePath = this.generateRelativePath();
     if (!relativePath) {
       alert('Failed to generate relative path. Please fill in all required fields.');
       return;
     }
-
+  
+    // Dynamically set properties based on nodeType
+    let properties: { [key: string]: string } = {};
+  
+    switch (this.nodeType) {
+      case 'pcis:vendor_Withholding':
+        properties = {
+          'pcis:vendorId': this.uploadForm.get('vendorId')?.value || 'DefaultVendorID',
+          'pcis:vendorName': this.uploadForm.get('vendorName')?.value || 'DefaultVendorName',
+        };
+        break;
+  
+      case 'pcis:intake_FROI':
+        properties = {
+          'pcis:intake_id': this.uploadForm.get('intakeId')?.value || 'DefaultIntakeID',
+          'pcis:investigator': this.uploadForm.get('investigator')?.value || 'DefaultInvestigator',
+          'pcis:dispute_type': this.uploadForm.get('disputeType')?.value || 'DefaultDisputeType',
+        };
+        break;
+  
+      default:
+        console.error('Unsupported nodeType:', this.nodeType);
+        alert('Unsupported document type.');
+        return;
+    }
+  
     this.uploadService
-      .uploadFile(this.selectedFile, this.nodeType, relativePath)
+      .uploadFile(this.selectedFile, this.nodeType, relativePath, properties)
       .subscribe(
         (response) => {
           console.log('File uploaded successfully!', response);
@@ -102,30 +129,12 @@ export class UploadComponent {
           console.error('Error uploading file:', error);
         }
       );
-  }
-
-  //map Peroperties based on which docType is selcted 
-  mapProperties(metadata: any): any {
-    const properties: any = {};
-  
-    switch (metadata.documentType) {
-      case 'VendorDocument':
-        properties['pcis:vendorName'] = metadata.vendorName;
-        properties['pcis:vendorId'] = metadata.vendorId;
-        properties['pcis:vendorStatus'] = metadata.vendorStatus;
-        break;
-  
-      case 'IntakeDocument':
-        properties['pcis:disputeType'] = metadata.disputeType;
-        properties['pcis:investigator'] = metadata.investigator;
-        properties['pcis:intakeId'] = metadata.intakeId;
-        break;
-  
-      default:
-        console.warn('Unhandled document type:', metadata.documentType);
-    }
-  
-    return properties;
+      console.log('Payload:', {
+        file: this.selectedFile,
+        nodeType: this.nodeType,
+        relativePath,
+        properties,
+      });
   }
   
 
@@ -217,4 +226,7 @@ export class UploadComponent {
       intakeId: '',
     });
   }
+
+  
 }
+//old
