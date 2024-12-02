@@ -12,6 +12,7 @@
         </a>
         <div class="divider"></div>
       </li>
+      <!--Task List
       <li>
         <a routerLinkActive="active" (click)="toggleSubmenu()">
           <span class="menu-icon material-icons">task</span>
@@ -20,16 +21,15 @@
             <mat-icon>{{ isSubmenuOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
           </span>
         </a>
-        <!-- Sub-menu for Dashboard with left padding -->
         <ul *ngIf="isSubmenuOpen" class="sub-menu">
           <li><a routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon material-icons">assignment</span><span class="menu-text">My Tasks</span></a></li>
           <li><a routerLink="/queued-tasks" routerLinkActive="active"><span class="menu-icon material-icons">hourglass_empty</span><span class="menu-text">Queued</span></a></li>
           <li><a routerLink="/completed-tasks" routerLinkActive="active"><span class="menu-icon material-icons">check_circle</span><span class="menu-text">Completed</span></a></li>
         </ul>
-      </li>
+      </li> -->
       <li>
         <a routerLink="/document-page" routerLinkActive="active">
-          <span class="menu-icon material-icons">folder</span>
+          <span class="menu-icon material-icons">search</span>
           <span class="menu-text">DOCUMENTS</span>
         </a>
       </li>
