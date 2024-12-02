@@ -179,9 +179,59 @@
               />
             </div>
           </div>
+          <!-- Claim Metadata -->
+       <div *ngIf="nodeType === 'pcis:claims_Investigation'">
+        <div class="form-group">
+          <label for="disputeType">Dispute Type:</label>
+          <input
+            type="text"
+            id="disputeType"
+            formControlName="disputeType"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="investigator">Investigator:</label>
+          <input
+            type="text"
+            id="investigator"
+            formControlName="investigator"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="intakeId">Intake ID:</label>
+          <input
+            type="text"
+            id="intakeId"
+            formControlName="intakeId"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="locationCode">Location Code:</label>
+          <input
+            type="text"
+            id="locationCode"
+            formControlName="locationCode"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="evidenceType">Evidence Type:</label>
+          <input
+            type="text"
+            id="evidenceType"
+            formControlName="evidenceType"
+            class="form-control"
+          />
         </div>
       </div>
 
+        </div>
+      </div>
+
+       
       <!-- Upload Button -->
       <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-primary">
         SUBMIT
@@ -189,3 +239,4 @@
     </form>
   </div>
 </div>
+<!-- Upload Button -->

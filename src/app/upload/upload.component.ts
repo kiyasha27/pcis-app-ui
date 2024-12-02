@@ -8,6 +8,7 @@ import { UploadService } from './upload.service';
   styleUrls: ['./upload.component.scss'],
 })
 export class UploadComponent {
+  
   uploadForm: FormGroup;
   selectedFile!: File;
   nodeType: string = ''; // This will be set dynamically based on documentType
@@ -21,6 +22,7 @@ export class UploadComponent {
   // Additional metadata fields visibility
   showVendorFields: boolean = false;
   showIntakeFields: boolean = false;
+  showClaimFields: boolean = false;
 
   // Dropdown options
   sites: string[] = [
@@ -38,7 +40,7 @@ export class UploadComponent {
     'WC_Policy',
   ];
   classifications: string[] = [];
-  documentTypes: string[] = ['Vendor Withholding', 'Intake FROI'];
+  documentTypes: string[] = ['Vendor Withholding', 'Intake FROI', 'Claim Investigation'];
 
   constructor(private uploadService: UploadService, private fb: FormBuilder) {
     this.uploadForm = this.fb.group({
@@ -57,6 +59,8 @@ export class UploadComponent {
       disputeType: [''],
       investigator: [''],
       intakeId: [''],
+      evidenceType: [''],
+      locationCode: [''],
     });
   }
 
@@ -100,8 +104,8 @@ onFileSelected(event: any): void {
     switch (this.nodeType) {
       case 'pcis:vendor_Withholding':
         properties = {
-          'pcis:vendorId': this.uploadForm.get('vendorId')?.value || 'DefaultVendorID',
-          'pcis:vendorName': this.uploadForm.get('vendorName')?.value || 'DefaultVendorName',
+          'pcis:vendor_id': this.uploadForm.get('vendorId')?.value || 'DefaultVendorID',
+          'pcis:vendor_name': this.uploadForm.get('vendorName')?.value || 'DefaultVendorName',
         };
         break;
   
@@ -110,6 +114,16 @@ onFileSelected(event: any): void {
           'pcis:intake_id': this.uploadForm.get('intakeId')?.value || 'DefaultIntakeID',
           'pcis:investigator': this.uploadForm.get('investigator')?.value || 'DefaultInvestigator',
           'pcis:dispute_type': this.uploadForm.get('disputeType')?.value || 'DefaultDisputeType',
+        };
+        break;
+
+        case 'pcis:claims_Investigation':
+        properties = {
+          'pcis:intake_id': this.uploadForm.get('intakeId')?.value || 'DefaultIntakeID',
+          'pcis:investigator': this.uploadForm.get('investigator')?.value || 'DefaultInvestigator',
+          'pcis:dispute_type': this.uploadForm.get('disputeType')?.value || 'DefaultDisputeType',
+          'pcis:evidence_type': this.uploadForm.get('evidenceType')?.value || 'DefaultEvidenceType',
+          'pcis:location_code': this.uploadForm.get('locationCode')?.value || 'DefaultLocationCode',
         };
         break;
   
@@ -206,6 +220,10 @@ onFileSelected(event: any): void {
           this.nodeType = 'pcis:intake_FROI';
           this.showIntakeFields = true;
           break;
+       case 'Claim Investigation':
+            this.nodeType = 'pcis:claims_Investigation';
+            this.showClaimFields = true;
+            break;  
         default:
           this.nodeType = '';
           break;
@@ -217,6 +235,7 @@ onFileSelected(event: any): void {
   resetAdditionalFields(): void {
     this.showVendorFields = false;
     this.showIntakeFields = false;
+    this.showClaimFields = false;
     this.uploadForm.patchValue({
       vendorName: '',
       vendorId: '',
@@ -224,6 +243,8 @@ onFileSelected(event: any): void {
       disputeType: '',
       investigator: '',
       intakeId: '',
+      evidenceType: '',
+      locationCode: '',
     });
   }
 

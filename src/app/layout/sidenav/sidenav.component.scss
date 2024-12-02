@@ -7,18 +7,18 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 100px;
   transition: all 0.3s;
 
   .menu-icon {
-    font-size: 27px;
+    font-size: 30px;
     margin-right: 10px;
     
   }
 
   .menu-text {
       font-family: 'Inter', sans-serif;
-      font-size: 17px;
+      font-size: 15px;
     }
     
 }
@@ -36,7 +36,7 @@
 }
 
 .sidebar {
- box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+ box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
   background-color: #fff8eb;
   width: 255px;
   padding: 20px;
@@ -44,7 +44,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  // border-radius: 10%;
+  border-radius: 1%;
   overflow-x: hidden;
   margin-top: 48px;
   
@@ -66,7 +66,7 @@
   &:hover {
     // box-shadow: 0px 0px 20px rgba(0, 0, 255, 0.5);
     background-color: rgb(241, 241, 241);
-    color: #6c6c6c;
+    color: #0056b3;
 
 
   }
