@@ -227,7 +227,17 @@
           />
         </div>
       </div>
-
+      <div *ngIf="nodeType === 'pcis:company_Contact_Updates'">
+        <div class="form-group">
+          <label for="disputeType">Workflow Status:</label>
+          <input
+            type="text"
+            id="workflowStatus"
+            formControlName="workflowStatus"
+            class="form-control"
+          />
+        </div>
+      </div>
         </div>
       </div>
 
