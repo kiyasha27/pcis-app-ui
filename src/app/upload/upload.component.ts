@@ -25,7 +25,8 @@ export class UploadComponent {
   showClaimFields: boolean = false;
   showCompanyFields: boolean = false;
   showPolicyNoteCoverageSumFields: boolean = false;
-  
+  uploadResponse: any;
+  uploadedFileId: any;
 
 
   // Dropdown options
@@ -167,14 +168,27 @@ onFileSelected(event: any): void {
       .uploadFile(this.selectedFile, this.nodeType, relativePath, properties)
       .subscribe(
         (response) => {
-          console.log('File uploaded successfully!', response);
-        },
-        (error) => {
-          console.error('Error uploading file:', error);
-        }
-      );
+        // Save the full response if needed
+      this.uploadResponse = response;
+
+      // Extract and store the ID from the response
+      const entryId = response?.entry?.id;
+      if (entryId) {
+        console.log('Uploaded file nodeID:', entryId);
+        this.uploadedFileId = entryId; // Save it for later use
+      } else {
+        console.warn('ID not found in response:', response);
+      }
+
+      console.log('File uploaded successfully!', response);
       alert('Your submission was successful.');
-      location.reload(); // refresh page to start afresh
+    },
+    (error) => {
+      console.error('Error uploading file:', error);
+      alert('There was an error during the upload. Please try again.');
+    }
+  );
+      
       console.log('Payload:', {
         file: this.selectedFile,
         nodeType: this.nodeType,
