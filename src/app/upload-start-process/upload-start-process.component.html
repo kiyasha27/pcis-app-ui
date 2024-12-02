@@ -1,274 +1,67 @@
 <div class="card0">
-    <div class="card-header">
-      <h3>1. Upload Document</h3>
-    </div>
-    <div class="card-body0">
-      <!-- File Input -->
-      <input type="file" (change)="onFileSelected($event)" />
-    </div>
+  <div class="card-header">
+    <h3>1. Select Document To Upload</h3>
   </div>
-  
-  <div class="card">
-    <div class="card-header">
-      <h3>2. Please Enter Document Information Below</h3>
-    </div>
-    <div class="card-body">
-      <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-        <!-- Site Selection -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <h5>2.1. Company</h5>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="siteSelection">Select Company:</label>
-              <select
-                id="siteSelection"
-                formControlName="site"
-                class="form-control"
-                (change)="onSiteChange($event)"
-              >
-                <option value="" disabled>Select a Company</option>
-                <option *ngFor="let site of sites" [value]="site">{{ site }}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Business Level Selection -->
-        <div class="card mb-3" *ngIf="showBusinessLevel">
-          <div class="card-header">
-            <h5>2.2. Business Level</h5>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="folderSelection">Select Business Level Folder:</label>
-              <select
-                id="folderSelection"
-                formControlName="folder"
-                class="form-control"
-                (change)="onFolderChange($event)"
-              >
-                <option value="" disabled>Select a folder</option>
-                <option *ngFor="let folder of businessFolders" [value]="folder">{{ folder }}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Classification Type -->
-        <div class="card mb-3" *ngIf="showClassificationType">
-          <div class="card-header">
-            <h5>2.3. Classification Types</h5>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="classification">Select Classification Type:</label>
-              <select
-                id="classification"
-                formControlName="classification"
-                class="form-control"
-                (change)="onClassificationChange($event)"
-              >
-                <option value="" disabled>Select a classification</option>
-                <option *ngFor="let classification of classifications" [value]="classification">
-                  {{ classification }}
-                </option>
-              </select>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Document Type and Metadata -->
-        <div class="card mb-3" *ngIf="showDocumentType">
-          <div class="card-header">
-            <h5>2.4. Document Type and Metadata</h5>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="documentType">Select Document Type:</label>
-              <select
-                id="documentType"
-                formControlName="documentType"
-                class="form-control"
-                (change)="onDocumentTypeChange($event)"
-              >
-                <option value="" disabled>Select a document type</option>
-                <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
-              </select>
-            </div>
-  
-            <!-- Common Metadata -->
-            <div class="form-group">
-              <label for="clientName">Client Name:</label>
-              <input
-                type="text"
-                id="clientName"
-                formControlName="clientName"
-                class="form-control"
-              />
-            </div>
-            <div class="form-group">
-              <label for="clientCode">Client Code:</label>
-              <input
-                type="text"
-                id="clientCode"
-                formControlName="clientCode"
-                class="form-control"
-              />
-            </div>
-  
-            <!-- Vendor Metadata -->
-            <div *ngIf="nodeType === 'pcis:vendor_Withholding'">
-              <div class="form-group">
-                <label for="vendorName">Vendor Name:</label>
-                <input
-                  type="text"
-                  id="vendorName"
-                  formControlName="vendorName"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="vendorId">Vendor ID:</label>
-                <input
-                  type="text"
-                  id="vendorId"
-                  formControlName="vendorId"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="vendorStatus">Vendor Status:</label>
-                <input
-                  type="text"
-                  id="vendorStatus"
-                  formControlName="vendorStatus"
-                  class="form-control"
-                />
-              </div>
-            </div>
-  
-            <!-- Intake Metadata -->
-            <div *ngIf="nodeType === 'pcis:intake_FROI'">
-              <div class="form-group">
-                <label for="disputeType">Dispute Type:</label>
-                <input
-                  type="text"
-                  id="disputeType"
-                  formControlName="disputeType"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="investigator">Investigator:</label>
-                <input
-                  type="text"
-                  id="investigator"
-                  formControlName="investigator"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label for="intakeId">Intake ID:</label>
-                <input
-                  type="text"
-                  id="intakeId"
-                  formControlName="intakeId"
-                  class="form-control"
-                />
-              </div>
-            </div>
-            <!-- Claim Metadata -->
-         <div *ngIf="nodeType === 'pcis:claims_Investigation'">
-          <div class="form-group">
-            <label for="disputeType">Dispute Type:</label>
-            <input
-              type="text"
-              id="disputeType"
-              formControlName="disputeType"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="investigator">Investigator:</label>
-            <input
-              type="text"
-              id="investigator"
-              formControlName="investigator"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="intakeId">Intake ID:</label>
-            <input
-              type="text"
-              id="intakeId"
-              formControlName="intakeId"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="locationCode">Location Code:</label>
-            <input
-              type="text"
-              id="locationCode"
-              formControlName="locationCode"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="evidenceType">Evidence Type:</label>
-            <input
-              type="text"
-              id="evidenceType"
-              formControlName="evidenceType"
-              class="form-control"
-            />
-          </div>
-        </div>
-        <!-- company Metadata -->
-        <div *ngIf="nodeType === 'pcis:company_Contact_Updates'">
-          <div class="form-group">
-            <label for="disputeType">Workflow Status:</label>
-            <input
-              type="text"
-              id="workflowStatus"
-              formControlName="workflowStatus"
-              class="form-control"
-            />
-          </div>
-        </div>
-        <!-- company Metadata -->
-        <div *ngIf="nodeType === 'pcis:policy_Notes_Coverage_Summary'">
-          <div class="form-group">
-            <label for="coverageCode">Coverage Code:</label>
-            <input
-              type="text"
-              id="coverageCode"
-              formControlName="coverageCode"
-              class="form-control"
-            />
-          </div>
-          <div class="form-group">
-            <label for="policyNumber">Policy Number:</label>
-            <input
-              type="text"
-              id="policyNumber"
-              formControlName="policyNumber"
-              class="form-control"
-            />
-          </div>
-        </div>
-          </div>
-        </div>
-  
-         
-        <!-- Upload Button -->
-        <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-primary">
-          SUBMIT
-        </button>
-      </form>
-    </div>
+  <div class="card-body0">
+    <!-- File Input -->
+    <input type="file" (change)="onFileSelected($event)" />
   </div>
-  <!-- Upload Button -->
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h3>2. Please Enter Document Information Below</h3>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      <!-- Site Selection -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5>2.1. Company</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="siteSelection">Select Company:</label>
+            <select
+              id="siteSelection"
+              formControlName="site"
+              class="form-control"
+              (change)="onSiteChange($event)"
+            >
+              <option value="" disabled>Select a Company</option>
+              <option *ngFor="let site of sites" [value]="site">{{ site }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Level Selection -->
+      <div class="card mb-3" *ngIf="showBusinessLevel">
+        <div class="card-header">
+          <h5>2.2. Business Level</h5>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="folderSelection">Select Business Level Folder:</label>
+            <select
+              id="folderSelection"
+              formControlName="folder"
+              class="form-control"
+              (change)="onFolderChange($event)"
+            >
+              <option value="" disabled>Select a folder</option>
+              <option *ngFor="let folder of businessFolders" [value]="folder">{{ folder }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Upload Button -->
+      <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-primary">
+        SUBMIT
+      </button>
+    </form>
+  </div>
+</div>
+<!-- Upload Button -->
