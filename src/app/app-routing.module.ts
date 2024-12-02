@@ -8,6 +8,7 @@ import { CompletedTasksComponent } from './completed-tasks/completed-tasks.compo
 import { QueuedTasksComponent } from './queued-tasks/queued-tasks.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { UploadComponent } from './upload/upload.component';
+import { UploadStartProcessComponent } from './upload-start-process/upload-start-process.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'completed-tasks', component: CompletedTasksComponent },
   { path: 'queued-tasks', component: QueuedTasksComponent},
   { path: 'document-page', component: DocumentPageComponent},
-  { path: 'upload', component: UploadComponent}
+  { path: 'upload', component: UploadComponent},
+  { path: 'upload-start-process', component: UploadStartProcessComponent}
 
 
 

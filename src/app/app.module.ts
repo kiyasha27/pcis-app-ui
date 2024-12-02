@@ -36,7 +36,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { UploadComponent } from './upload/upload.component'; // Import the component
 import { UploadService } from './upload/upload.service'; // Import the service
-import { ReactiveFormsModule } from '@angular/forms'; // Import this module
+import { ReactiveFormsModule } from '@angular/forms';
+import { UploadStartProcessComponent } from './upload-start-process/upload-start-process.component'; // Import this module
 
 // Import FormsModule
 @NgModule({
@@ -54,6 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import this module
     QueuedTasksComponent,
     DocumentPageComponent,
     UploadComponent,
+    UploadStartProcessComponent,
   ],
   imports: [
     ReactiveFormsModule,
