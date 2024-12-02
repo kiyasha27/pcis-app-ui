@@ -227,6 +227,7 @@
           />
         </div>
       </div>
+      <!-- company Metadata -->
       <div *ngIf="nodeType === 'pcis:company_Contact_Updates'">
         <div class="form-group">
           <label for="disputeType">Workflow Status:</label>
@@ -234,6 +235,27 @@
             type="text"
             id="workflowStatus"
             formControlName="workflowStatus"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <!-- company Metadata -->
+      <div *ngIf="nodeType === 'pcis:policy_Notes_Coverage_Summary'">
+        <div class="form-group">
+          <label for="coverageCode">Coverage Code:</label>
+          <input
+            type="text"
+            id="coverageCode"
+            formControlName="coverageCode"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="policyNumber">Policy Number:</label>
+          <input
+            type="text"
+            id="policyNumber"
+            formControlName="policyNumber"
             class="form-control"
           />
         </div>

@@ -24,6 +24,9 @@ export class UploadComponent {
   showIntakeFields: boolean = false;
   showClaimFields: boolean = false;
   showCompanyFields: boolean = false;
+  showPolicyNoteCoverageSumFields: boolean = false;
+  
+
 
   // Dropdown options
   sites: string[] = [
@@ -41,7 +44,7 @@ export class UploadComponent {
     'WC_Policy',
   ];
   classifications: string[] = [];
-  documentTypes: string[] = ['Vendor Withholding', 'Intake FROI', 'Claim Investigation', 'Company Contact Updates'];
+  documentTypes: string[] = ['Vendor Withholding', 'Intake FROI', 'Claim Investigation', 'Company Contact Updates', 'Policy Notes Coverage Summary'];
 
   constructor(private uploadService: UploadService, private fb: FormBuilder) {
     this.uploadForm = this.fb.group({
@@ -63,6 +66,8 @@ export class UploadComponent {
       evidenceType: [''],
       locationCode: [''],
       workflowStatus: [''],
+      policyNumber: [''],
+      coverageCode: [''],
     });
   }
 
@@ -90,7 +95,7 @@ onFileSelected(event: any): void {
 
   upload(): void {
     if (!this.selectedFile || !this.nodeType) {
-      alert('Please select a file and enter a node type.');
+      alert('Please select a file.');
       return;
     }
   
@@ -142,6 +147,15 @@ onFileSelected(event: any): void {
 
         };
         break;
+        case 'pcis:policy_Notes_Coverage_Summary':
+        properties = {
+          'pcis:client_code': this.uploadForm.get('clientCode')?.value || 'DefaultClientCode',
+          'pcis:client_name': this.uploadForm.get('clientName')?.value || 'DefaultClientName',
+          'pcis:policy_number': this.uploadForm.get('policyNumber')?.value || 'DefaultPolicyNumber',
+          'pcis:coverage_code': this.uploadForm.get('coverageCode')?.value || 'DefaultCoverageCode',
+
+        };
+        break;
   
       default:
         console.error('Unsupported nodeType:', this.nodeType);
@@ -159,6 +173,8 @@ onFileSelected(event: any): void {
           console.error('Error uploading file:', error);
         }
       );
+      alert('Your submission was successful.');
+      location.reload(); // refresh page to start afresh
       console.log('Payload:', {
         file: this.selectedFile,
         nodeType: this.nodeType,
@@ -172,10 +188,10 @@ onFileSelected(event: any): void {
   onSubmit(): void {
     if (this.uploadForm.valid) {
       this.upload();
+    } else {
       alert('Your submission was successful.');
       location.reload(); // refresh page to start afresh
-    } else {
-      alert('Please fill in all required fields.');
+      
     }
   }
 
@@ -245,6 +261,10 @@ onFileSelected(event: any): void {
         case 'Company Contact Updates':
               this.nodeType = 'pcis:company_Contact_Updates';
               this.showCompanyFields = true;
+              break; 
+        case 'Policy Notes Coverage Summary':
+              this.nodeType = 'pcis:policy_Notes_Coverage_Summary';
+              this.showPolicyNoteCoverageSumFields = true;
               break;      
         default:
           this.nodeType = '';
@@ -259,6 +279,7 @@ onFileSelected(event: any): void {
     this.showIntakeFields = false;
     this.showClaimFields = false;
     this.showCompanyFields = false;
+    this.showPolicyNoteCoverageSumFields = false;
     this.uploadForm.patchValue({
       vendorName: '',
       vendorId: '',
@@ -268,6 +289,8 @@ onFileSelected(event: any): void {
       intakeId: '',
       evidenceType: '',
       locationCode: '',
+      policyNumber: '',
+      coverageCode: '',
     });
   }
 
