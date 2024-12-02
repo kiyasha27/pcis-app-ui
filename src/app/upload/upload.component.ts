@@ -172,6 +172,8 @@ onFileSelected(event: any): void {
   onSubmit(): void {
     if (this.uploadForm.valid) {
       this.upload();
+      alert('Your submission was successful.');
+      location.reload(); // refresh page to start afresh
     } else {
       alert('Please fill in all required fields.');
     }
