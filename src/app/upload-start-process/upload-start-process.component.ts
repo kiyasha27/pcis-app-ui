@@ -29,6 +29,7 @@ export class UploadStartProcessComponent {
   showPolicyNoteCoverageSumFields: boolean = false;
   uploadResponse: any;
   uploadedFileId: any;
+  entryId: any;
 
 
   // Dropdown options
@@ -49,7 +50,7 @@ export class UploadStartProcessComponent {
   classifications: string[] = [];
   documentTypes: string[] = ['Vendor Withholding', 'Intake FROI', 'Claim Investigation', 'Company Contact Updates', 'Policy Notes Coverage Summary'];
 
-  constructor(private uploadService: UploadService, private fb: FormBuilder) {
+  constructor(private uploadService: UploadService, private fb: FormBuilder, private http: HttpClient) {
     this.uploadForm = this.fb.group({
       site: ['', Validators.required],
       folder: ['', Validators.required],
@@ -174,16 +175,17 @@ onFileSelected(event: any): void {
       this.uploadResponse = response;
 
       // Extract and store the ID from the response
-      const entryId = response?.entry?.id;
-      if (entryId) {
-        console.log('Uploaded file nodeID:', entryId);
-        this.uploadedFileId = entryId; // Save it for later use
+      this.entryId = response?.entry?.id;
+      if (this.entryId) {
+        console.log('Uploaded file nodeID:', this.entryId);
+        this.uploadedFileId = this.entryId; // Save it for later use
       } else {
         console.warn('ID not found in response:', response);
       }
 
       console.log('File uploaded successfully!', response);
       alert('Your submission was successful.');
+      this.sendProcessInstance();
     },
     (error) => {
       console.error('Error uploading file:', error);
@@ -309,4 +311,88 @@ onFileSelected(event: any): void {
       coverageCode: '',
     });
   }
+
+  
+  sendProcessInstance() {
+    console.log('Preparing to send API request...');
+    console.log('entryId:', this.entryId); // Debug log
+
+    if (!this.entryId) {
+        console.error('Error: entryId is undefined or empty.');
+        return; // Stop execution if entryId is invalid
+    }
+
+    const apiUrl = 'http://192.168.82.62:8081/activiti-app/api/enterprise/process-instances';
+    const payload = {
+        businessKey: '',
+        name: 'PCIS_Checks',
+        processDefinitionKey: 'PCIS_Checks',
+        variables: [
+            {
+                name: 'DOC_STATUS',
+                scope: 'local',
+                type: 'string',
+                value: 'Unseen'
+            },
+            {
+                name: 'DocumentNodeID',
+                scope: 'local',
+                type: 'string',
+                value: this.entryId
+            },
+            {
+                name: 'First_Adjuster',
+                scope: 'local',
+                type: 'string',
+                value: '51'
+            },
+            {
+                name: 'Second_Adjuster',
+                scope: 'local',
+                type: 'string',
+                value: ''
+            },
+            {
+                name: 'adjusterGroupID',
+                scope: 'local',
+                type: 'string',
+                value: '106'
+            },
+            {
+                name: 'First_Supervisor',
+                scope: 'local',
+                type: 'string',
+                value: '51'
+            },
+            {
+                name: 'Second_Supervisor',
+                scope: 'local',
+                type: 'string',
+                value: ''
+            },
+            {
+                name: 'supervisorGroupID',
+                scope: 'local',
+                type: 'string',
+                value: '107'
+            }
+        ]
+    };
+
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa('mseanego:MSeanego@12')
+        
+    });
+
+    this.http.post(apiUrl, payload, { headers }).subscribe(
+        (response) => {
+            console.log('Process instance created:', response);
+        },
+        (error) => {
+            console.error('Error creating process instance:', error);
+        }
+    );
+}
+
 }
