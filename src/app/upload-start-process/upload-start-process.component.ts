@@ -13,7 +13,7 @@ import { UploadService } from '../upload/upload.service';
 export class UploadStartProcessComponent {
   uploadForm: FormGroup;
   selectedFile!: File;
-  nodeType: string = 'cm:content'; // This will be set dynamically based on documentType
+  nodeType: string = 'pcis:claims_Black_HCFA'; // This will be set dynamically based on documentType
   batch: boolean = false;
 
   // UI flags for conditional rendering
@@ -90,7 +90,7 @@ onFileSelected(event: any): void {
     let properties: { [key: string]: string } = {};
   
     switch (this.nodeType) {
-      case 'cm:content':
+      case 'pcis:claims_Black_HCFA':
         properties = {
           'aspectNames':'davies:scanner',
           'davies:IDX_Company_Num':'254005',
@@ -100,7 +100,31 @@ onFileSelected(event: any): void {
           'davies:DOC_STATUS':'Unseen',
           'davies:Bypass_Workflow':'Yes',
           'davies:SYS_STATUS': 'E',
-          'davies:Document_Definition': 'wcChecks'
+          'davies:Document_Definition': 'wcChecks',
+          'pcis:batch': 'b65474567456',
+          'pcis:batch_id':'0898907546',
+          'pcis:client_code': 'client63456453',
+          'pcis:bypass_workflow_type':'true',
+          'pcis:client_name':'client',
+          'pcis:document_create_by':'Admin',
+          'pcis_document_origin':'device',
+          'pcis:document_origin_type':'machine',
+          'pcis:document_status':'indexed',
+          'pcis:insured_first_name':'Charlie',
+          'pcis:insured_last_name':'Delta',
+          'pcis:page':'756475',
+          'pcis:policy_type':'claim',
+          'pcis:workflow_status':'In-Progress',
+          'pcis:bill_review_id':'bill_01',
+          'pcis:claim_number':'claim_8674536',
+          'pcis:claimant_first_name':'Echo',
+          'pcis:claimant_last_name':'Foxtrot',
+          'pcis:claimant_name':'Echo Foxtrot',
+          'pcis:dispute_name':'Accident',
+          'pcis:dispute_type':'Accident',
+          'pcis:employer_name':'PCIS',
+          'pcis:intake_id':'intake_54634654'
+
         };
         break;
 
