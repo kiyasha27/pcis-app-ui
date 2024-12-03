@@ -222,7 +222,7 @@ onFileSelected(event: any): void {
                 name: 'First_Adjuster',
                 scope: 'local',
                 type: 'string',
-                value: '51'
+                value: '101'
             },
             {
                 name: 'Second_Adjuster',
@@ -240,7 +240,7 @@ onFileSelected(event: any): void {
                 name: 'First_Supervisor',
                 scope: 'local',
                 type: 'string',
-                value: '51'
+                value: '101'
             },
             {
                 name: 'Second_Supervisor',
