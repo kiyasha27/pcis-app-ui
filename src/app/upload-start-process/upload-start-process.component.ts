@@ -202,10 +202,16 @@ onFileSelected(event: any): void {
 
     const apiUrl = 'http://192.168.82.62:8081/activiti-app/api/enterprise/process-instances';
     const payload = {
-        businessKey: '',
+        businessKey: '30024',
         name: 'PCIS_Checks',
         processDefinitionKey: 'PCIS_Checks',
         variables: [
+          {
+            "name": "businessKey",
+            "scope": "local",
+            "type": "string",
+            "value": "30024"
+        },
             {
                 name: 'DOC_STATUS',
                 scope: 'local',
