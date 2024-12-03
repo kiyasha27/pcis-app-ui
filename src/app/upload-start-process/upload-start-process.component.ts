@@ -93,8 +93,15 @@ onFileSelected(event: any): void {
     switch (this.nodeType) {
       case 'cm:content':
         properties = {
-          'pcis:client_code':'DefaultClientCode',
-          'pcis:client_name':'DefaultClientName',
+          'aspectNames':'davies:scanner',
+          'davies:IDX_Company_Num':'254005',
+          'davies:Application':'WorkComp',
+          'davies:DOC_ORIGIN':'O',
+          'davies:DOC_CAT':'CHECKS',
+          'davies:DOC_STATUS':'Unseen',
+          'davies:Bypass_Workflow':'Yes',
+          'davies:SYS_STATUS': 'E',
+          'davies:Document_Definition': 'wcChecks'
         };
         break;
 
@@ -121,7 +128,7 @@ onFileSelected(event: any): void {
       }
 
       console.log('File uploaded successfully!', response);
-      alert('Your submission was successful.');
+      alert('Your upload was successful.');
       this.sendProcessInstance();
     },
     (error) => {
@@ -246,6 +253,8 @@ onFileSelected(event: any): void {
     this.http.post(apiUrl, payload, { headers }).subscribe(
         (response) => {
             console.log('Process instance created:', response);
+            alert('Your process was successfully started!');
+            window.location.reload();
         },
         (error) => {
             console.error('Error creating process instance:', error);
