@@ -40,7 +40,7 @@ export class UploadStartProcessComponent {
     '117421-seminole-county-school-board',
   ];
   businessFolders: string[] = [
-    'Claims',
+    'Claim',
     'Company',
     'Intake', 
     'PAC_Policy',
