@@ -34,28 +34,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Business Level Selection -->
-      <div class="card mb-3" *ngIf="showBusinessLevel">
-        <div class="card-header">
-          <h5>2.2. Business Level</h5>
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label for="folderSelection">Select Business Level Folder:</label>
-            <select
-              id="folderSelection"
-              formControlName="folder"
-              class="form-control"
-              (change)="onFolderChange($event)"
-            >
-              <option value="" disabled>Select a folder</option>
-              <option *ngFor="let folder of businessFolders" [value]="folder">{{ folder }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
       
       <!-- Upload Button -->
       <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-primary">

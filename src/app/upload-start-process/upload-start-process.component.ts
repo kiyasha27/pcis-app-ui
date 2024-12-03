@@ -50,8 +50,7 @@ export class UploadStartProcessComponent {
 
   constructor(private uploadService: UploadService, private fb: FormBuilder, private http: HttpClient) {
     this.uploadForm = this.fb.group({
-      site: ['', Validators.required],
-      folder: ['', Validators.required]
+      site: ['', Validators.required]
 
     });
   }
@@ -69,8 +68,8 @@ onFileSelected(event: any): void {
     const site = this.uploadForm.get('site')?.value;
     const folder = this.uploadForm.get('folder')?.value;
 
-    if (site && folder) {
-      return `Sites/${site}/documentLibrary/${folder}`;
+    if (site) {
+      return `Sites/${site}/documentLibrary/Landing Folder`;
     }
     return '';
   }
@@ -167,16 +166,6 @@ onFileSelected(event: any): void {
       this.showBusinessLevel = false;
     }
   }
-
-
-  onFolderChange(event: any): void {
-    const folder = event.target.value;
-    this.uploadForm.get('folder')?.setValue(folder); // Update form control
-  }
-  
-
-
-
   
   sendProcessInstance() {
     console.log('Preparing to send API request...');
