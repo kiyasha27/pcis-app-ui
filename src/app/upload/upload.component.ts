@@ -37,7 +37,7 @@ export class UploadComponent {
     '117421-seminole-county-school-board',
   ];
   businessFolders: string[] = [
-    'Claims',
+    'Claim',
     'Company',
     'Intake', 
     'PAC_Policy',
@@ -228,7 +228,7 @@ onFileSelected(event: any): void {
     if (folder) {
       const folderClassifications: { [key: string]: string[] } = {
         Intake: ['Other', 'Intake'],
-        Claims: ['Other', 'Notes', 'Correspondence', 'Litigation', 'Payments'],
+        Claim: ['Other', 'Notes', 'Correspondence', 'Litigation', 'Payments'],
         WC_Policy: ['Other', 'Notes', 'Correspondence', 'Policy'],
         PAC_Policy: ['Other', 'Notes', 'Correspondence', 'Policy'],
         Company: ['Other', 'Notes', 'Correspondence', 'Company'],
