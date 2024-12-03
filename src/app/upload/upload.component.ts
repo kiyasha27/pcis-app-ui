@@ -87,9 +87,10 @@ onFileSelected(event: any): void {
     const classification = this.uploadForm.get('classification')?.value;
     const clientName = this.uploadForm.get('clientName')?.value;
     const clientCode = this.uploadForm.get('clientCode')?.value;
+    const intakeId = this.uploadForm.get('intakeId')?.value;
 
-    if (site && folder && clientCode && classification) {
-      return `Sites/${site}/documentLibrary/${folder}/${clientCode}/${classification}`;
+    if (site && folder && intakeId && classification) {
+      return `Sites/${site}/documentLibrary/${folder}/${intakeId}/${classification}`;
     }
     return '';
   }

@@ -116,7 +116,7 @@ onFileSelected(event: any): void {
           'pcis:policy_type':'claim',
           'pcis:workflow_status':'In-Progress',
           'pcis:bill_review_id':'bill_01',
-          'pcis:claim_number':'claim_8674536',
+          'pcis:claim_number':'30024',
           'pcis:claimant_first_name':'Echo',
           'pcis:claimant_last_name':'Foxtrot',
           'pcis:claimant_name':'Echo Foxtrot',
