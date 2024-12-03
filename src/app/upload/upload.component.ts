@@ -183,6 +183,7 @@ onFileSelected(event: any): void {
 
       console.log('File uploaded successfully!', response);
       alert('Your submission was successful.');
+      window.location.reload();
     },
     (error) => {
       console.error('Error uploading file:', error);
