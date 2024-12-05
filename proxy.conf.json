@@ -3,5 +3,11 @@
     "target": "https://documentsqa.pcisvision.com",
     "secure": false,
     "changeOrigin": true
+  },
+  "/activiti-app/api/*": {
+    "target": "http://192.168.82.62:8081",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }

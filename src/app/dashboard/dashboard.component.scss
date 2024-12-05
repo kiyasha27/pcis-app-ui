@@ -1,8 +1,26 @@
+/* General Card Styling */
 .my-tasks-card {
-    margin: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
+    margin: 12px;
+    padding: 12px;
+    background-color: #f8f7f6;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+
+  .my-tasks-assigned-card {
+    margin: 12px;
+    padding: 12px;
+    background-color: #f19e3f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+
+  .my-tasks-completed-card {
+    margin: 12px;
+    padding: 12px;
+    background-color: #a0ce4e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
   }
   
   .custom-card {
@@ -11,17 +29,20 @@
     gap: 20px;
   }
   
+  /* Sub-Card Styling */
   .sub-card {
     margin-top: 10px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Added padding for spacing within the sub-card */
   }
   
   .sub-card-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: #333;
+    margin-bottom: 10px; /* Add spacing below the title */
   }
   
   .profile-title {
@@ -36,14 +57,17 @@
     align-items: center;
   }
   
+  /* Material Card Header Styling */
   mat-card-header {
     background-color: #ececec;
+    border-radius: 8px 8px 0 0; /* Rounded corners at the top */
   }
   
   mat-card-content {
     padding: 15px;
   }
   
+  /* Button Styling */
   .view-details-btn,
   .open-task-btn {
     padding: 8px 16px;
@@ -51,101 +75,109 @@
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    color: white; /* White text */
-    border: none; /* Remove default border */
-    margin-left: 10px; /* Space between the buttons */
+    color: white;
+    border: none;
+    margin-left: 10px;
   }
   
   .view-details-btn {
-    background-color: #007bff; /* Blue color */
+    background-color: #293b44;
   }
   
   .view-details-btn:hover {
-    background-color: #0056b3; /* Darker blue when hovered */
-  }
-  
-  .view-details-btn:focus {
-    outline: none; /* Remove the outline when focused */
+    background-color: #293b44;
   }
   
   .open-task-btn {
-    background-color: #28a745; /* Green color */
+    background-color: #ffffff;
   }
   
   .open-task-btn:hover {
-    background-color: #218838; /* Darker green when hovered */
-  }
-  
-  .open-task-btn:focus {
-    outline: none; /* Remove the outline when focused */
+    background-color: #218838;
   }
   
   .sub-card-content {
     display: flex;
-    justify-content: space-between; /* Distribute space evenly between the buttons and content */
-    align-items: center; /* Vertically center the buttons and text */
-    margin-top: 10px; /* Optional: Add space at the top */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
   }
   
+  /* Task Details Table Styling */
+  .task-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #ffffff;
+    border-radius: 8px; /* Add rounded corners to the table */
+    overflow: hidden; /* Ensure corners are applied */
+  }
+  
+  /* Table Headers */
+  .task-details-table th {
+    text-align: left;
+    padding: 10px;
+    background-color: #293b44;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    font-size: 1rem; /* Adjust font size for readability */
+  }
+  
+  /* Table Rows */
+  .task-details-table td {
+    padding: 8px 10px;
+    border: 1px solid #e0e0e0;
+    color: #333;
+    font-size: 0.95rem; /* Slightly smaller font for consistency */
+  }
+  
+  /* Alternating Row Colors */
+  .task-details-table tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  /* Row Hover Effect */
+  .task-details-table tr:hover {
+    background-color: #b8edf4;
+    transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .task-details-table th,
+    .task-details-table td {
+      font-size: 14px;
+      padding: 6px;
+    }
+  
+    .sub-card-title {
+      font-size: 1.1rem;
+    }
+  
+    .profile-title {
+      font-size: 1.25rem;
+    }
+  }
+  
+  /* Footer Card Styling */
   .details-card {
     margin-top: 20px;
-    background-color: #f1f1f1;
+    background-color: #f1d7ac;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  /* Button Container Styling */
   .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; /* Align buttons to the left */
     align-items: center;
+    margin-top: 10px;
   }
   
-  .view-details-btn, .open-task-btn {
+  .view-details-btn,
+  .open-task-btn {
     margin-left: 10px;
   }
-  /* General table styling */
-.task-details-table {
-    width: 100%; /* Ensure the table spans the card width */
-    border-collapse: collapse; /* Remove gaps between table cells */
-    margin-top: 15px; /* Add some spacing above the table */
-    background-color: #f9f9f9; /* Light background color for table */
-  }
-  
-  /* Table headers */
-  .task-details-table th {
-    
-    text-align: left; /* Align headers to the left */
-    padding: 10px; /* Add padding for a better look */
-    background-color: #00796b; /* Darker color for header row */
-    color: white; /* White text for headers */
-    font-weight: bold;
-    border: 1px solid #ccc; /* Optional: add a border for separation */
-  }
-  
-  /* Table rows */
-  .task-details-table td {
-    padding: 8px 10px; /* Add padding for cell content */
-    border: 1px solid #e0e0e0; /* Light border for cell separation */
-    color: #333; /* Default text color */
-  }
-  
-  /* Alternating row colors */
-  .task-details-table tr:nth-child(even) {
-    background-color: #f2f2f2; /* Slightly darker background for even rows */
-  }
-  
-  /* Hover effect for rows */
-  .task-details-table tr:hover {
-    background-color: #e0f7fa; /* Light teal hover color */
-  }
-  
-  /* Responsive table for smaller screens */
-  @media (max-width: 768px) {
-    .task-details-table th,
-    .task-details-table td {
-      font-size: 14px; /* Smaller font for smaller screens */
-      padding: 6px; /* Adjust padding for smaller screens */
-    }
-  }
-  
   

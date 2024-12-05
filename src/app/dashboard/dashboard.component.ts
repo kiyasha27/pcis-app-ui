@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TaskService } from '../services/task.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,49 +9,35 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  hospitalBillsData = [
-    { 
-      status: 'In Progress', 
-      date: '2024-11-24', 
-      created: '2024-11-23', 
-      completed: 'Not Yet', 
-      assignee: 'John Doe' 
-    }
-  ];
-  
-  medicalReviewData = [
-    { 
-      status: 'In Progress', 
-      date: '2024-11-24', 
-      created: '2024-11-23', 
-      completed: 'Not Yet', 
-      assignee: 'John Doe' 
-    }
-  ];
-  
-  indexingTaskData = [
-    { 
-      status: 'In Progress', 
-      date: '2024-11-24', 
-      created: '2024-11-23', 
-      completed: 'Not Yet', 
-      assignee: 'John Doe' 
-    }
-  ];
-  
-  displayedColumns: string[] = ['status', 'date', 'created', 'completed', 'assignee'];
-  
-  detailsVisibility: { [key: string]: boolean } = {};
-  
-  // Toggle the visibility of the details card for a specific task
-  viewDetails(taskName: string): void {
-    this.detailsVisibility[taskName] = !this.detailsVisibility[taskName];
+  assignedTasks: any[] = [];
+  completedTasks: any[] = [];
+
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    this.loadAssignedTasks();
+    this.loadCompletedTasks();
   }
 
-  openTask(taskName: string): void {
-    console.log(`Opening task: ${taskName}`);
-    window.location.href = 'http://192.168.82.62:8081/activiti-app/#/';
+  loadAssignedTasks(): void {
+    this.taskService.getTasks(101, false).subscribe(
+      (data) => {
+        this.assignedTasks = data.data; // Adjust if necessary
+      },
+      (error) => {
+        console.error('Error fetching assigned tasks:', error);
+      }
+    );
   }
-  
-  
+
+  loadCompletedTasks(): void {
+    this.taskService.getTasks(101, true).subscribe(
+      (data) => {
+        this.completedTasks = data.data; // Adjust if necessary
+      },
+      (error) => {
+        console.error('Error fetching completed tasks:', error);
+      }
+    );
+  }
 }
