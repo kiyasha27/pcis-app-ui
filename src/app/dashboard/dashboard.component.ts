@@ -12,6 +12,7 @@ export class DashboardComponent {
   assignedTasks: any[] = [];
   completedTasks: any[] = [];
 
+
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
@@ -19,8 +20,10 @@ export class DashboardComponent {
     this.loadCompletedTasks();
   }
 
+
+
   loadAssignedTasks(): void {
-    this.taskService.getTasks(101, false).subscribe(
+    this.taskService.getTasks(203, false).subscribe(
       (data) => {
         this.assignedTasks = data.data; // Adjust if necessary
       },
@@ -31,7 +34,7 @@ export class DashboardComponent {
   }
 
   loadCompletedTasks(): void {
-    this.taskService.getTasks(101, true).subscribe(
+    this.taskService.getTasks(203, true).subscribe(
       (data) => {
         this.completedTasks = data.data; // Adjust if necessary
       },

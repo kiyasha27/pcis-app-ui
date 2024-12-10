@@ -1,23 +1,23 @@
 /* General Card Styling */
 .my-tasks-card {
-    margin: 12px;
-    padding: 12px;
+    margin: 20px;
+    padding: 5px;
     background-color: #f8f7f6;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
   }
 
   .my-tasks-assigned-card {
-    margin: 12px;
-    padding: 12px;
+    margin: 20px;
+    padding: 5px;
     background-color: #f19e3f;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
   }
 
   .my-tasks-completed-card {
-    margin: 12px;
-    padding: 12px;
+    margin: 20px;
+    padding: 5px;
     background-color: #a0ce4e;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
@@ -117,7 +117,7 @@
   .task-details-table th {
     text-align: left;
     padding: 10px;
-    background-color: #293b44;
+    background-color: #3a4246;
     color: white;
     font-weight: bold;
     border: 1px solid #ccc;
@@ -139,7 +139,7 @@
   
   /* Row Hover Effect */
   .task-details-table tr:hover {
-    background-color: #b8edf4;
+    background-color: #cbcfcf;
     transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
   }
   

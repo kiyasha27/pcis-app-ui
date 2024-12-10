@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { QueuedTasksServiceService } from '../services/queued-tasks-service.service';
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'app-task-list',
@@ -6,28 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./queued-tasks.component.scss']
 })
 export class QueuedTasksComponent {
-  // Define detailsVisibility with index signature for dynamic task names
-  detailsVisibility: Record<string, boolean> = { 'Queued Task': false };
-  
-  // Define columns for the table
-  displayedColumns: string[] = ['status', 'date', 'created', 'completed', 'assignee'];
-  
-  // Define default task data
-  taskData = [
-    { 
-      status: 'In Progress', 
-      date: '2024-11-24', 
-      created: '2024-11-23', 
-      completed: 'Not Yet', 
-      assignee: 'John Doe' 
-    }
-  ];
-  viewDetails(taskName: string): void {
-    this.detailsVisibility[taskName] = !this.detailsVisibility[taskName];
+  queuedTasks: any[] = [];
+
+
+  constructor(private taskService: TaskService) {}
+  ngOnInit(): void {
+
+    this.queuedTask();
   }
 
-  openTask(taskName: string): void {
-    console.log('Claimed task:', taskName);
-    // Add logic for claiming the task
+  queuedTask(): void{
+    // Example usage of getFilteredTasks
+    this.taskService.getFilteredTasks('created-desc', '', 'candidate').subscribe(
+      (data) => {
+        this.queuedTasks = data.data; // Adjust if necessary
+        console.log('Filtered tasks:', data);
+      },
+      (error) => {
+        console.error('Error fetching filtered tasks:', error);
+      }
+    );
   }
 }
