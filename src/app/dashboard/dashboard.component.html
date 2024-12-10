@@ -9,12 +9,14 @@
       </mat-card-header>
     </mat-card>
     
-    <!-- ASSIGNED TASKS CARD -->
-    <mat-card class="my-tasks-assigned-card">
+   <!-- ASSIGNED TASKS CARD -->
+<mat-card class="my-tasks-assigned-card">
       <mat-card class="sub-card">
         <mat-card-header>
           <div class="profile-header">
-            <h2 class="sub-card-title"> <mat-icon>list</mat-icon>ASSIGNED:</h2>
+            <h2 class="sub-card-title">
+              <mat-icon>list</mat-icon>ASSIGNED:
+            </h2>
           </div>
         </mat-card-header>
         <mat-card-content>
@@ -26,6 +28,7 @@
                 <th>Assignee</th>
                 <th>Created</th>
                 <th>Process Instance ID</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -35,6 +38,11 @@
                 <td>{{ task.assignee.firstName }} {{ task.assignee.lastName }}</td>
                 <td>{{ task.created | date: 'short' }}</td>
                 <td>{{ task.processInstanceId }}</td>
+                <td>
+                  <button mat-raised-button color="primary" (click)="openTask(task.id)">
+                    Open Task
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -42,7 +50,6 @@
       </mat-card>
     </mat-card>
     
-
 
     <!-- COMPLETED TASKS CARD -->
     <mat-card class="my-tasks-completed-card">

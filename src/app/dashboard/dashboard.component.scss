@@ -180,4 +180,27 @@
   .open-task-btn {
     margin-left: 10px;
   }
+  /* Style for the buttons */
+/* Define styles for the green button */
+button.mat-raised-button {
+    background-color: #4caf50; /* Green color */
+    color: #fff; /* White text */
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  
+    &:hover {
+      background-color: #45a049; /* Slightly darker green on hover */
+    }
+  
+    &:active {
+      background-color: #3e8e41; /* Even darker green when clicked */
+    }
+  
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5); /* Green focus ring */
+    }
+  }
+  
   

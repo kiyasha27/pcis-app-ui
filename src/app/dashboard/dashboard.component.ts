@@ -43,4 +43,9 @@ export class DashboardComponent {
       }
     );
   }
+
+  openTask(taskId: string): void {
+    const taskUrl = `http://192.168.82.62:8081/activiti-app/workflow/#/task/${taskId}`;
+    window.open(taskUrl, '_blank'); // Opens the task in a new tab
+  }
 }
