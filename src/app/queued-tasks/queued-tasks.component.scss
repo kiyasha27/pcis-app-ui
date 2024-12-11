@@ -10,9 +10,18 @@
   .my-tasks-assigned-card {
     margin: 20px;
     padding: 5px;
-    background-color: #f19e3f;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  }
+
+  .btn-primary {
+    background-color: #f2a93c;
+    color: white;
+    width: 100%; /* Make button fill the cell horizontally */
+    height: 100%; /* Make button fill the cell vertically */
+    box-sizing: border-box; /* Include padding and border in the total width/height */
+    border: none; /* Optional: Remove border if it causes misalignment */
   }
 
   .my-tasks-completed-card {
@@ -117,7 +126,7 @@
   .task-details-table th {
     text-align: left;
     padding: 10px;
-    background-color: #3a4246;
+    background-color: #24566f;
     color: white;
     font-weight: bold;
     border: 1px solid #ccc;

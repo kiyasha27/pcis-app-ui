@@ -4,7 +4,7 @@
     "secure": false,
     "changeOrigin": true
   },
-  "/activiti-app/api/*": {
+  "/activiti-app": {
     "target": "http://192.168.82.62:8081",
     "secure": false,
     "changeOrigin": true,

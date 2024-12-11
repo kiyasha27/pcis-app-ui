@@ -23,7 +23,7 @@ export class DashboardComponent {
 
 
   loadAssignedTasks(): void {
-    this.taskService.getTasks(203, false).subscribe(
+    this.taskService.getTasks(1, false).subscribe(
       (data) => {
         this.assignedTasks = data.data; // Adjust if necessary
       },
@@ -34,7 +34,7 @@ export class DashboardComponent {
   }
 
   loadCompletedTasks(): void {
-    this.taskService.getTasks(203, true).subscribe(
+    this.taskService.getTasks(1, true).subscribe(
       (data) => {
         this.completedTasks = data.data; // Adjust if necessary
       },
@@ -48,4 +48,6 @@ export class DashboardComponent {
     const taskUrl = `http://192.168.82.62:8081/activiti-app/workflow/#/task/${taskId}`;
     window.open(taskUrl, '_blank'); // Opens the task in a new tab
   }
+
+  
 }

@@ -10,7 +10,7 @@
   .my-tasks-assigned-card {
     margin: 20px;
     padding: 5px;
-    background-color: #f19e3f;
+    background-color: #ffffff; /* Add assigned card colour */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
   }
@@ -18,7 +18,7 @@
   .my-tasks-completed-card {
     margin: 20px;
     padding: 5px;
-    background-color: #a0ce4e;
+    background-color: #f7f8f4; /* Add completed card colour */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
   }
@@ -117,7 +117,7 @@
   .task-details-table th {
     text-align: left;
     padding: 10px;
-    background-color: #3a4246;
+    background-color: #24566f;
     color: white;
     font-weight: bold;
     border: 1px solid #ccc;
@@ -180,27 +180,41 @@
   .open-task-btn {
     margin-left: 10px;
   }
+
+  .btn-primary {
+    background-color: #17b11cc5;
+    color: white;
+    width: 100%; /* Make button fill the cell horizontally */
+    height: 100%; /* Make button fill the cell vertically */
+    box-sizing: border-box; /* Include padding and border in the total width/height */
+    border: none; /* Optional: Remove border if it causes misalignment */
+  }
+
+  .btn-primary:hover {
+    background-color: #118115c5;
+  }
   /* Style for the buttons */
-/* Define styles for the green button */
-button.mat-raised-button {
-    background-color: #4caf50; /* Green color */
+
+  ::ng-deep button.mat-raised-button {
+    background-color: #4caf50; /* Green */
     color: #fff; /* White text */
     font-weight: bold;
     text-transform: uppercase;
     padding: 6px 12px;
+  }
   
-    &:hover {
-      background-color: #45a049; /* Slightly darker green on hover */
-    }
+  ::ng-deep button.mat-raised-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+  }
   
-    &:active {
-      background-color: #3e8e41; /* Even darker green when clicked */
-    }
+  ::ng-deep button.mat-raised-button:active {
+    background-color: #3e8e41; /* Even darker green when clicked */
+  }
   
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5); /* Green focus ring */
-    }
+  ::ng-deep button.mat-raised-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5); /* Green focus ring */
+    
   }
   
   

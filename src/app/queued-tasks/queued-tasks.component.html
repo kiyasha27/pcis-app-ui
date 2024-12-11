@@ -14,7 +14,7 @@
               <th>Task Name</th>
               <th>Assignee</th>
               <th>Created</th>
-              <th>Process Instance ID</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -23,7 +23,11 @@
               <td>{{ task.name }}</td>
               <td>Unassigned</td>
               <td>{{ task.created | date: 'short' }}</td>
-              <td>{{ task.processInstanceId }}</td>
+              <td>
+                <button mat-raised-button (click)="retrieveTask(task.id)" class="btn btn-primary">
+                  Retrieve Task
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
