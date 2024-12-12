@@ -38,6 +38,11 @@ import { UploadComponent } from './upload/upload.component'; // Import the compo
 import { UploadService } from './upload/upload.service'; // Import the service
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadStartProcessComponent } from './upload-start-process/upload-start-process.component'; // Import this module
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
+
+
 
 // Import FormsModule
 @NgModule({
@@ -76,7 +81,10 @@ import { UploadStartProcessComponent } from './upload-start-process/upload-start
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,  // Add MatPaginatorModule here
+    MatCardModule,       // Ensure other necessary Material modules are imported
+    MatButtonModule,
   ],
   providers: [UploadService], // Provide the service
   bootstrap: [AppComponent]

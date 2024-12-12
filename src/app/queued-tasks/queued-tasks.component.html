@@ -1,9 +1,9 @@
 <!-- QUEUED TASKS CARD -->
-<mat-card class="my-tasks-assigned-card">
+
     <mat-card class="sub-card">
       <mat-card-header>
         <div class="profile-header">
-          <h2 class="sub-card-title"> <mat-icon>list</mat-icon>QUEUED:</h2>
+          <h2 class="sub-card-title">Queued Tasks</h2>
         </div>
       </mat-card-header>
       <mat-card-content>
@@ -31,7 +31,8 @@
             </tr>
           </tbody>
         </table>
+        <mat-card-footer>
+            <br><p>Total Unassigned Tasks: {{ queuedTasks.length }}</p>
+          </mat-card-footer>
       </mat-card-content>
     </mat-card>
-  </mat-card>
-  

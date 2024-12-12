@@ -34,15 +34,24 @@ export class QueuedTasksComponent {
   retrieveTask(taskId: string): void {
     this.taskService.claimTask(taskId).subscribe(
       (response) => {
-        console.log('Task claimed successfully:', response);
-        // Refresh the list of tasks after claiming one
+        console.log('Task claimed successfully!', response);
+        alert('The task has been claimed successfully!');
+        
         this.queuedTask(); // Re-fetch the tasks after the task is claimed
       },
       (claimTaskError) => {
-        console.error('Hello, Error claiming task:', claimTaskError);
-        // Handle error here
+        console.error('Error claiming task:', claimTaskError);
+        alert('There was an issue claiming the task.\nYou will be redirected to another page to claim your task.\n\nThank you.');
+  
+        // Call openTask with the taskId
+        this.openTask(taskId);
       }
     );
-  }  
+  }
+  
+  openTask(taskId: string): void {
+    const taskUrl = `http://192.168.82.62:8081/activiti-app/workflow/#/task/${taskId}`;
+    window.open(taskUrl, '_blank'); // Opens the task in a new tab
+  }
 
 }
