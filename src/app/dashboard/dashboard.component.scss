@@ -42,7 +42,11 @@
     position: relative; /* Ensure proper stacking */
   }
   
-  
+  mat-panel-title{
+font-size: large;
+padding-left: 15px;
+font-family:'Roboto', sans-serif;;
+  }
   .sub-card-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -59,6 +63,8 @@
   
   .profile-header {
     display: flex;
+    padding-left: 17px;
+    padding-top: 10px;
     justify-content: space-between;
     align-items: center;
   }
@@ -88,10 +94,19 @@
   .open-task-btn {
     background-color: #28a745; /* Green for opening tasks */
     color: #fff;
+    padding-top: 20px; /* Ensure proper spacing above the button */
+    
   }
-  
+  mat-icon{
+    padding-top: 2px; 
+     
+  }
+  .actions {
+    margin-top: 16px; /* Ensure proper spacing above the button */
+  }
   .open-task-btn:hover {
-    background-color: #218838; /* Darker green hover */
+    padding-top: 20px; /* Ensure proper spacing above the button */
+   
   }
   
   /* Task Details Table Styling */
@@ -253,7 +268,9 @@
     padding: 16px; /* Add padding for a larger click area */
     border-radius: 4px; /* Optional: rounded corners */
   }
-  
+  .actions {
+    margin-top: 16px; /* Ensure proper spacing above the button */
+  }
   .full-width-button:hover {
     background-color: #45a049; /* Darker green for hover effect */
   }

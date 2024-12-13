@@ -9,7 +9,7 @@
       <mat-expansion-panel *ngFor="let task of pagedAssignedTasks">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ task.name }}
+            <mat-icon>list</mat-icon>{{ task.name }}
           </mat-panel-title>
         </mat-expansion-panel-header>
 
@@ -67,7 +67,7 @@
       <mat-expansion-panel *ngFor="let task of pagedCompletedTasks">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{ task.name }}
+            <mat-icon>done</mat-icon>{{ task.name }}
           </mat-panel-title>
         </mat-expansion-panel-header>
 
