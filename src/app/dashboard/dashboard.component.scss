@@ -74,15 +74,7 @@
   
   /* Button Styling */
   .view-details-btn,
-  .open-task-btn {
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    border: none;
-  }
+
   
   .view-details-btn {
     background-color: #3a7ca5; /* Blue tone for details */
@@ -157,7 +149,7 @@
   /* Primary Button */
   .btn-primary {
     background-color: #17b11c;
-    color: white;
+    color: rgb(182, 22, 22);
     border: none;
     padding: 10px 20px;
     font-size: 14px;
@@ -187,6 +179,7 @@
     }
   }
   
+  
   /* Deep Material Button Styling */
   ::ng-deep button.mat-raised-button {
     background-color: #4caf50;
@@ -204,4 +197,66 @@
     outline: none;
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5);
   }
+  .sub-card {
+    margin-top: 15px; /* Increase margin for better spacing */
+    margin-bottom: 15px; /* Ensure spacing below the card */
+    margin-left: 15px; /* Ensure spacing below the card */
+    margin-right: 15px; /* Ensure spacing below the card */
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 25px; /* Slightly increase padding for content breathing space */
+    overflow: hidden; /* Prevent content overflow */
+    position: relative; /* Ensure proper stacking */
+  }
+  
+  .task-details-table {
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+
+  
+  mat-expansion-panel {
+    margin-bottom: 10px;
+  }
+  .task-card {
+    min-height: 150px; // Adjust to your preference
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Centers content vertically
+  }
+  
+  
+  mat-expansion-panel {
+    margin-bottom: 15px; // Adds spacing between cards
+    margin-top: 15px;
+  }
+  
+  .task-header {
+    font-size: 18px; // Adjusts font size for task title
+    font-weight: bold;
+  }
+
+  mat-expansion-panel-header{
+    min-height: 60px;
+    background-color: #e3eef5;
+  }
+
+
+  .full-width-button {
+    width: 100%; /* Extend the button to fit the width of its container */
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    font-weight: bold; /* Make text bold */
+    text-align: center; /* Center align text */
+    padding: 16px; /* Add padding for a larger click area */
+    border-radius: 4px; /* Optional: rounded corners */
+  }
+  
+  .full-width-button:hover {
+    background-color: #45a049; /* Darker green for hover effect */
+  }
+    
+  
   

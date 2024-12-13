@@ -1,90 +1,113 @@
-<!-- ASSIGNED TASKS CARD -->
 <mat-card class="sub-card">
-      <mat-card-header>
-        <div class="profile-header">
-          <h2 class="sub-card-title">My Assigned Tasks</h2>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
+  <mat-card-header>
+    <div class="profile-header">
+      <h2 class="sub-card-title">My Assigned Tasks</h2>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let task of pagedAssignedTasks">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ task.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <!-- Collapsible content -->
         <table class="table table-bordered task-details-table">
-          <thead>
-            <tr>
-              <th>Task ID</th>
-              <th>Task Name</th>
-              <th>Assignee</th>
-              <th>Created</th>
-              <th>Action</th>
-            </tr>
-          </thead>
           <tbody>
-            <tr *ngFor="let task of pagedAssignedTasks">
-              <td>{{ task.id }}</td>
-              <td>{{ task.name }}</td>
-              <td>{{ task.assignee.firstName }} {{ task.assignee.lastName }}</td>
-              <td>{{ task.created | date: 'short' }}</td>
-              <td>
-                <button mat-raised-button (click)="openTask(task.id)" class="btn btn-primary">
-                  Open Task
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-    
-        <mat-paginator 
-          [length]="assignedTasks.length" 
-          [pageSize]="7" 
-          [pageSizeOptions]="[7, 14, 21]" 
-          (page)="paginateAssignedTasks($event)">
-        </mat-paginator>
-    
-        <mat-card-footer>
-          <br><p>Total Assigned Tasks: {{ assignedTasks.length }}</p>
-        </mat-card-footer>
-      </mat-card-content>
-    </mat-card>
-    
-    <!-- COMPLETED TASKS CARD -->
-    <mat-card class="sub-card">
-      <mat-card-header>
-        <div class="profile-header">
-          <h2 class="sub-card-title">My Completed Tasks</h2>
-        </div>
-      </mat-card-header>
-      <mat-card-content>
-        <table class="table table-bordered task-details-table">
-          <thead>
             <tr>
-              <th>Task ID</th>
-              <th>Task Name</th>
-              <th>Assignee</th>
-              <th>Created</th>
-              <th>Completed</th>
-              <th>Process Instance ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let task of pagedCompletedTasks">
+              <td><strong>Task ID:</strong></td>
               <td>{{ task.id }}</td>
-              <td>{{ task.name }}</td>
+            </tr>
+            <tr>
+              <td><strong>Assignee:</strong></td>
               <td>{{ task.assignee.firstName }} {{ task.assignee.lastName }}</td>
+            </tr>
+            <tr>
+              <td><strong>Created:</strong></td>
               <td>{{ task.created | date: 'short' }}</td>
-              <td>{{ task.endDate | date: 'short' }}</td>
+            </tr>
+            <tr>
+              <td><strong>Process Instance ID:</strong></td>
               <td>{{ task.processInstanceId }}</td>
             </tr>
           </tbody>
         </table>
+        <div class="actions">
+          <button mat-raised-button class="full-width-button" style="background-color: #4caf50; color: white;" (click)="openTask(task.id)">
+            <mat-icon>open_in_new</mat-icon> Open Task
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-paginator
+      [length]="assignedTasks.length"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 15]"
+      (page)="paginateAssignedTasks($event)">
+    </mat-paginator>
+
+    <mat-card-footer>
+      <p>Total Assigned Tasks: {{ assignedTasks.length }}</p>
+    </mat-card-footer>
+  </mat-card-content>
+</mat-card>
+
     
-        <mat-paginator 
-          [length]="completedTasks.length" 
-          [pageSize]="7" 
-          [pageSizeOptions]="[7, 14, 21]" 
-          (page)="paginateCompletedTasks($event)">
-        </mat-paginator>
-    
-        <mat-card-footer>
-          <br><p>Total Completed Tasks: {{ completedTasks.length }}</p>
-        </mat-card-footer>
-      </mat-card-content>
-    </mat-card>
-    
+<mat-card class="sub-card">
+  <mat-card-header>
+    <div class="profile-header">
+      <h2 class="sub-card-title">My Completed Tasks</h2>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let task of pagedCompletedTasks">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ task.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <!-- Collapsible content -->
+        <table class="table table-bordered task-details-table">
+          <tbody>
+            <tr>
+              <td><strong>Task ID:</strong></td>
+              <td>{{ task.id }}</td>
+            </tr>
+            <tr>
+              <td><strong>Assignee:</strong></td>
+              <td>{{ task.assignee.firstName }} {{ task.assignee.lastName }}</td>
+            </tr>
+            <tr>
+              <td><strong>Created:</strong></td>
+              <td>{{ task.created | date: 'short' }}</td>
+            </tr>
+            <tr>
+              <td><strong>Completed:</strong></td>
+              <td>{{ task.endDate | date: 'short' }}</td>
+            </tr>
+            <tr>
+              <td><strong>Process Instance ID:</strong></td>
+              <td>{{ task.processInstanceId }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-paginator
+      [length]="completedTasks.length"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 15]"
+      (page)="paginateCompletedTasks($event)">
+    </mat-paginator>
+
+    <mat-card-footer>
+      <p>Total Completed Tasks: {{ completedTasks.length }}</p>
+    </mat-card-footer>
+  </mat-card-content>
+</mat-card>

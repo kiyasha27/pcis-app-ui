@@ -39,6 +39,8 @@ import { UploadService } from './upload/upload.service'; // Import the service
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadStartProcessComponent } from './upload-start-process/upload-start-process.component'; // Import this module
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 
@@ -85,6 +87,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,  // Add MatPaginatorModule here
     MatCardModule,       // Ensure other necessary Material modules are imported
     MatButtonModule,
+    MatExpansionModule, // Add this
+    MatButtonModule, // For buttons
+    MatIconModule, // For icons
   ],
   providers: [UploadService], // Provide the service
   bootstrap: [AppComponent]

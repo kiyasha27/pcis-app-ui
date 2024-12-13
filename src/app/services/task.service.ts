@@ -9,7 +9,6 @@ export class TaskService {
 
   private baseUrl = '/activiti-app/api/enterprise/historic-tasks/query';
   private filterUrl = '/activiti-app/api/enterprise/tasks/filter';
-  private url = `activiti-app/api/enterprise/tasks/`;
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +41,7 @@ export class TaskService {
    
  claimTask(taskId: string): Observable<any> {
   const headers = this.createHeaders();
-  const url = `http://192.168.82.62:8081/activiti-app/api/enterprise/tasks/${taskId}/action/claim`;
+  const url = `/activiti-app/api/enterprise/tasks/${taskId}/action/claim`;
   
 
   return this.http.put(url, { headers });
@@ -54,7 +53,7 @@ export class TaskService {
     private createHeaders(): HttpHeaders {
       return new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Basic ' + btoa('admin@app.activiti.com:^dTg3mqQxVJ%XT9t66kA+@k4g'),
+        Authorization: 'Basic ' + btoa ('admin@app.activiti.com:^dTg3mqQxVJ%XT9t66kA+@k4g'),
         
       });
     }

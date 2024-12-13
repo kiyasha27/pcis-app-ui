@@ -3,6 +3,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { TaskService } from '../services/task.service';
 import { interval } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +19,10 @@ export class DashboardComponent {
   pagedCompletedTasks: any[] = []; // Paginated completed tasks
 
   // Pagination variables
-  assignedTasksPageSize = 7;
+  assignedTasksPageSize = 5;
   assignedTasksPageIndex = 0;
 
-  completedTasksPageSize = 7;
+  completedTasksPageSize = 5;
   completedTasksPageIndex = 0;
 
   constructor(private taskService: TaskService) {}
@@ -30,7 +33,7 @@ export class DashboardComponent {
   }
 
   loadAssignedTasks(): void {
-    this.taskService.getTasks(1, false).subscribe(
+    this.taskService.getTasks(203, false).subscribe(
       (data) => {
         this.assignedTasks = data.data; // Adjust according to your data structure
         this.updatePagedAssignedTasks();
@@ -42,7 +45,7 @@ export class DashboardComponent {
   }
 
   loadCompletedTasks(): void {
-    this.taskService.getTasks(1, true).subscribe(
+    this.taskService.getTasks(203, true).subscribe(
       (data) => {
         this.completedTasks = data.data; // Adjust according to your data structure
         this.updatePagedCompletedTasks();
