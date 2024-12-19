@@ -1,51 +1,48 @@
 <div class="sidebar" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }" [@fadeInOut]>
-  <!-- Sidebar Logo -->
   <div class="sidebar-logo">
     <img src="assets/images/logo-1.png" alt="App Logo" />
-  </div>  
-<br>
-  <ul>
-      <li>
-        <a routerLink="/home" routerLinkActive="active">
-          <span class="menu-icon material-icons">home</span>
-          <span class="menu-text">HOME</span>
-        </a>
-        <div class="divider"></div>
-      </li>
-      <li>
-        <a routerLink="/upload-start-process" routerLinkActive="active">
-          <span class="menu-icon material-icons">scanner</span>
-          <span class="menu-text">SCANNING</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/upload" routerLinkActive="active">
-          <span class="menu-icon material-icons">upload</span>
-          <span class="menu-text">UPLOAD & INDEX</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/document-page" routerLinkActive="active">
-          <span class="menu-icon material-icons">search</span>
-          <span class="menu-text">COMPANIES</span>
-        </a>
-      </li>
-      
-      
-      <li>
-        <a routerLinkActive="active" (click)="toggleSubmenu()">
-          <span class="menu-icon material-icons">task</span>
-          <span class="menu-text">TASKS</span>
-          <span class="sub-menu-icon" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }">
-            <mat-icon>{{ isSubmenuOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
-          </span>
-        </a>
-        <ul *ngIf="isSubmenuOpen" class="sub-menu">
-          <li><a routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon material-icons">assignment</span><span class="menu-text">My Tasks</span></a></li>
-          <li><a routerLink="/queued-tasks" routerLinkActive="active"><span class="menu-icon material-icons">hourglass_empty</span><span class="menu-text">Queued</span></a></li>
-        </ul>
-      </li>
-    
-    </ul>
   </div>
+  <br />
+  <ul>
+    <li>
+      <a routerLink="/home" routerLinkActive="active">
+        <span class="menu-icon material-icons">home</span>
+        <span class="menu-text">HOME</span>
+      </a>
+      <div class="divider"></div>
+    </li>
+    <li>
+      <a routerLink="/upload-start-process" routerLinkActive="active">
+        <span class="menu-icon material-icons">scanner</span>
+        <span class="menu-text">SCANNING</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/upload" routerLinkActive="active">
+        <span class="menu-icon material-icons">upload</span>
+        <span class="menu-text">UPLOAD & INDEX</span>
+      </a>
+    </li>
+    <li>
+      <a routerLink="/document-page" routerLinkActive="active">
+        <span class="menu-icon material-icons">search</span>
+        <span class="menu-text">COMPANIES</span>
+      </a>
+    </li>
 
+    <!-- Only show TASKS if logged in -->
+    <li *ngIf="isLoggedIn">
+      <a routerLinkActive="active" (click)="toggleSubmenu()">
+        <span class="menu-icon material-icons">task</span>
+        <span class="menu-text">TASKS</span>
+        <span class="sub-menu-icon" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }">
+          <mat-icon>{{ isSubmenuOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
+        </span>
+      </a>
+      <ul *ngIf="isSubmenuOpen" class="sub-menu">
+        <li><a routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon material-icons">assignment</span><span class="menu-text">My Tasks</span></a></li>
+        <li><a routerLink="/queued-tasks" routerLinkActive="active"><span class="menu-icon material-icons">hourglass_empty</span><span class="menu-text">Queued</span></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

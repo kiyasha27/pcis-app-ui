@@ -40,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UploadStartProcessComponent } from './upload-start-process/upload-start-process.component'; // Import this module
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -63,6 +64,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     DocumentPageComponent,
     UploadComponent,
     UploadStartProcessComponent,
+    LoginComponent,
   ],
   imports: [
     ReactiveFormsModule,

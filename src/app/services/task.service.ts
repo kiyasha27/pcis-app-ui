@@ -40,7 +40,7 @@ export class TaskService {
 
    
  claimTask(taskId: string): Observable<any> {
-  const headers = this.createHeaders();
+  const headers = this.createHeadersClaim();
   const url = `/activiti-app/api/enterprise/tasks/${taskId}/action/claim`;
   
 
@@ -50,10 +50,19 @@ export class TaskService {
   /**
    * Helper method to create HTTP headers for API requests.
    */
+    private createHeadersClaim(): HttpHeaders {
+      return new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa ('kreethram:KReethram@12'),
+        
+        
+      });
+    }
     private createHeaders(): HttpHeaders {
       return new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Basic ' + btoa ('admin@app.activiti.com:^dTg3mqQxVJ%XT9t66kA+@k4g'),
+        
         
       });
     }

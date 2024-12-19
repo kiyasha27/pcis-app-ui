@@ -9,9 +9,11 @@ import { QueuedTasksComponent } from './queued-tasks/queued-tasks.component';
 import { DocumentPageComponent } from './document-page/document-page.component';
 import { UploadComponent } from './upload/upload.component';
 import { UploadStartProcessComponent } from './upload-start-process/upload-start-process.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'profile', component: ProfileComponent },

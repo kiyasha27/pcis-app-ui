@@ -24,18 +24,25 @@ export class DashboardComponent {
 
   completedTasksPageSize = 5;
   completedTasksPageIndex = 0;
+  router: any;
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.loadAssignedTasks();
-    this.loadCompletedTasks();
+    const userId = sessionStorage.getItem('userId');
+    if (userId) {
+      this.loadAssignedTasks(parseInt(userId, 10));
+      this.loadCompletedTasks(parseInt(userId, 10));
+    } else {
+      console.error('User ID not found. Redirecting to login.');
+      this.router.navigate(['/login']);
+    }
   }
-
-  loadAssignedTasks(): void {
-    this.taskService.getTasks(203, false).subscribe(
+  
+  loadAssignedTasks(userId: number): void {
+    this.taskService.getTasks(userId, false).subscribe(
       (data) => {
-        this.assignedTasks = data.data; // Adjust according to your data structure
+        this.assignedTasks = data.data;
         this.updatePagedAssignedTasks();
       },
       (error) => {
@@ -43,11 +50,11 @@ export class DashboardComponent {
       }
     );
   }
-
-  loadCompletedTasks(): void {
-    this.taskService.getTasks(203, true).subscribe(
+  
+  loadCompletedTasks(userId: number): void {
+    this.taskService.getTasks(userId, true).subscribe(
       (data) => {
-        this.completedTasks = data.data; // Adjust according to your data structure
+        this.completedTasks = data.data;
         this.updatePagedCompletedTasks();
       },
       (error) => {
@@ -55,6 +62,7 @@ export class DashboardComponent {
       }
     );
   }
+  
 
   openTask(taskId: string): void {
     const taskUrl = `http://192.168.82.62:8081/activiti-app/workflow/#/task/${taskId}`;
