@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { Router } from '@angular/router'; // Import Router
 import { TaskService } from '../services/task.service';
 import { interval } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,25 +25,26 @@ export class DashboardComponent {
 
   completedTasksPageSize = 5;
   completedTasksPageIndex = 0;
-  router: any;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private router: Router) {}
 
   ngOnInit(): void {
     const userId = sessionStorage.getItem('userId');
     if (userId) {
-      this.loadAssignedTasks(parseInt(userId, 10));
-      this.loadCompletedTasks(parseInt(userId, 10));
+      const numericUserId = parseInt(userId, 10);
+      this.loadAssignedTasks();
+      this.loadCompletedTasks();
     } else {
       console.error('User ID not found. Redirecting to login.');
       this.router.navigate(['/login']);
     }
   }
-  
-  loadAssignedTasks(userId: number): void {
-    this.taskService.getTasks(userId, false).subscribe(
+
+  loadAssignedTasks(): void {
+    this.taskService.getTasks(false).subscribe(
       (data) => {
-        this.assignedTasks = data.data;
+        console.log('Assigned Tasks:', data);
+        this.assignedTasks = data.data || []; // Safely assign tasks
         this.updatePagedAssignedTasks();
       },
       (error) => {
@@ -50,11 +52,12 @@ export class DashboardComponent {
       }
     );
   }
-  
-  loadCompletedTasks(userId: number): void {
-    this.taskService.getTasks(userId, true).subscribe(
+
+  loadCompletedTasks(): void {
+    this.taskService.getTasks(true).subscribe(
       (data) => {
-        this.completedTasks = data.data;
+        console.log('Completed Tasks:', data);
+        this.completedTasks = data.data || []; // Safely assign tasks
         this.updatePagedCompletedTasks();
       },
       (error) => {
@@ -62,38 +65,33 @@ export class DashboardComponent {
       }
     );
   }
-  
 
-  openTask(taskId: string): void {
-    const taskUrl = `http://192.168.82.62:8081/activiti-app/workflow/#/task/${taskId}`;
-    window.open(taskUrl, '_blank'); // Opens the task in a new tab
-  }
-
-  // Update paged assigned tasks
   updatePagedAssignedTasks(): void {
     const startIndex = this.assignedTasksPageIndex * this.assignedTasksPageSize;
     const endIndex = startIndex + this.assignedTasksPageSize;
     this.pagedAssignedTasks = this.assignedTasks.slice(startIndex, endIndex);
   }
 
-  // Update paged completed tasks
   updatePagedCompletedTasks(): void {
     const startIndex = this.completedTasksPageIndex * this.completedTasksPageSize;
     const endIndex = startIndex + this.completedTasksPageSize;
     this.pagedCompletedTasks = this.completedTasks.slice(startIndex, endIndex);
   }
 
-  // Handle page change for assigned tasks
   paginateAssignedTasks(event: PageEvent): void {
     this.assignedTasksPageIndex = event.pageIndex;
     this.assignedTasksPageSize = event.pageSize;
     this.updatePagedAssignedTasks();
   }
 
-  // Handle page change for completed tasks
   paginateCompletedTasks(event: PageEvent): void {
     this.completedTasksPageIndex = event.pageIndex;
     this.completedTasksPageSize = event.pageSize;
     this.updatePagedCompletedTasks();
+  }
+
+  openTask(taskId: string): void {
+    const taskUrl = `http://192.168.82.62:8081/activiti-app/workflow/#/task/${taskId}`;
+    window.open(taskUrl, '_blank');
   }
 }

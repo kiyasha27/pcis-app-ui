@@ -1,73 +1,88 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  private baseUrl = '/activiti-app/api/enterprise/historic-tasks/query';
-  private filterUrl = '/activiti-app/api/enterprise/tasks/filter';
+  private readonly baseUrl = '/activiti-app/api/enterprise/historic-tasks/query';
+  private readonly filterUrl = '/activiti-app/api/enterprise/tasks/filter';
+  private readonly claimUrl = '/activiti-app/api/enterprise/tasks';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   
-  getTasks(taskAssignee: number, finished: boolean): Observable<any> {
+  /**
+   * Fetch tasks based on assignment and completion status.
+   * @param finished - Task completion status (true for completed tasks).
+   * @returns Observable of tasks.
+   */
+  getTasks(finished: boolean): Observable<any> {
     const headers = this.createHeaders();
+    const userId = this.authService.getUserId(); // Fetch the current user's ID
+
+    if (!userId) {
+      throw new Error('User ID is not available. Ensure the user is logged in.');
+    }
 
     const payload = {
-      finished: finished,
-      taskAssignee: taskAssignee,
+      finished,
+      taskAssignee: userId,
     };
 
     return this.http.post(this.baseUrl, payload, { headers });
   }
 
-  getFilteredTasks(sort: string, name: string, assignment: string): Observable<any> {
+  /**
+   * Fetch filtered tasks based on specific criteria.
+   * @param sort - Sorting field.
+   * @param name - Name filter.
+   * @param assignment - Assignment filter.
+   * @returns Observable of filtered tasks.
+   */
+  getFilteredTasks(
+    sort: string,
+    name: string,
+    assignment: string
+  ): Observable<any> {
     const headers = this.createHeaders();
 
     const payload = {
       filter: {
-        sort: sort,
-        name: name,
-        assignment: assignment,
-      }
+        sort,
+        name,
+        assignment,
+      },
     };
 
     return this.http.post(this.filterUrl, payload, { headers });
   }
 
-   
- claimTask(taskId: string): Observable<any> {
-  const headers = this.createHeadersClaim();
-  const url = `/activiti-app/api/enterprise/tasks/${taskId}/action/claim`;
-  
+  /**
+   * Claim a task using its ID.
+   * @param taskId - ID of the task to be claimed.
+   * @returns Observable of the claim response.
+   */
+  claimTask(taskId: string): Observable<any> {
+    const headers = this.createHeaders();
+    const url = `${this.claimUrl}/${taskId}/action/claim`;
 
-  return this.http.put(url, { headers });
-}
+    return this.http.put(url, {}, { headers });
+  }
 
   /**
    * Helper method to create HTTP headers for API requests.
+   * Uses `admin@app.activiti.com` credentials.
    */
-    private createHeadersClaim(): HttpHeaders {
-      return new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Basic ' + btoa ('kreethram:KReethram@12'),
-        
-        
-      });
-    }
-    private createHeaders(): HttpHeaders {
-      return new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Basic ' + btoa ('admin@app.activiti.com:^dTg3mqQxVJ%XT9t66kA+@k4g'),
-        
-        
-      });
-    }
-
-
+  private createHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + btoa('admin@app.activiti.com:^dTg3mqQxVJ%XT9t66kA+@k4g'),
+    });
+  }
 //old
   
 }

@@ -1,10 +1,9 @@
-<div class="login-container"> 
-    <h2>Login</h2>
-    <mat-form-field class="full-width">
+<div class="header">
+    <mat-form-field>
       <mat-label>Username</mat-label>
       <input matInput [(ngModel)]="username" placeholder="Enter your username" />
     </mat-form-field>
     <button mat-raised-button color="primary" (click)="login()">Login</button>
-  </div>
+  </div>  
   <router-outlet></router-outlet>
   

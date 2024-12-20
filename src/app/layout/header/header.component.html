@@ -14,7 +14,16 @@
   
   <span class="example-spacer"></span>
 
-
+  <div *ngIf="isLoggedIn; else notLoggedIn">
+    <p>Hello, {{ username }}!
+      <button mat-button (click)="logout()" class="neumorphic-button">Logout</button>
+    </p>
+    
+  </div>
+  <ng-template #notLoggedIn>
+    <p>User is not logged in.</p>
+  </ng-template>
+  
   <!-- Profile Button with Icon -->
   <button
     mat-button

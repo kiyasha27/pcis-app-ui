@@ -25,21 +25,25 @@ export class SidebarComponent implements OnInit {
   isSubmenuOpen = false;
   isDashboardSelected = false;
   isLoggedIn = false;
+  username: string | null = null;
 
 
   constructor(private sidebarService: SidebarService) {}
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
-      console.log(isVisible)
       this.isSidebarVisible = isVisible;
-      
     });
-     // Subscribe to the login status observable
-     this.sidebarService.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn; // Update local state based on login status
+
+    this.sidebarService.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+
+    this.sidebarService.username$.subscribe((username) => {
+      this.username = username; // Update the local username state
     });
   }
+
     
 
   toggleSidebar() {
@@ -60,7 +64,5 @@ export class SidebarComponent implements OnInit {
   toggleSubmenu() {
     this.isSubmenuOpen = !this.isSubmenuOpen; // Toggle the tasks submenu
   }
-
-  username: string | null = null;
 
 }

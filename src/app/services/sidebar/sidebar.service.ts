@@ -8,25 +8,32 @@ import { BehaviorSubject } from 'rxjs';
   export class SidebarService {
     private sidebarVisibility = new BehaviorSubject<boolean>(true);
     sidebarVisibility$ = this.sidebarVisibility.asObservable();
+
+  
+    constructor() {}
+    
+    private isLoggedInSource = new BehaviorSubject<boolean>(false);
+    private usernameSource = new BehaviorSubject<string>('');
+  
+    isLoggedIn$ = this.isLoggedInSource.asObservable();
+    username$ = this.usernameSource.asObservable();
+  
+    login(username: string): void {
+      this.isLoggedInSource.next(true);
+      this.usernameSource.next(username);
+      sessionStorage.setItem('username', username); // Save the username
+    }
+  
+    logout(): void {
+      this.isLoggedInSource.next(false);
+      this.usernameSource.next('');
+      sessionStorage.clear(); // Clear all session storage data
+    }
     
   
     toggleSidebar() {
       const currentState = this.sidebarVisibility.value;
       this.sidebarVisibility.next(!currentState);
     }
-    private isLoggedInSubject = new BehaviorSubject<boolean>(false);  // Default is not logged in
-    isLoggedIn$ = this.isLoggedInSubject.asObservable();  // Expose as observable to listen for changes
-  
-    constructor() {}
-  
-// Method to set login status
-login() {
-  this.isLoggedInSubject.next(true); // Set to true when user logs in
-}
 
-// Method to log out
-logout() {
-  this.isLoggedInSubject.next(false); // Set to false when user logs out
-}
-    
-}
+  }

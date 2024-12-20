@@ -11,22 +11,21 @@ export class LoginComponent {
   username = '';
   users = {
     kreethram: 203,
-    admin: 101,
+    admin: 1,
   };
 
-
   constructor(private sidebarService: SidebarService) {}
-
-
 
   login(): void {
     const userId = this.users[this.username as keyof typeof this.users];
     if (userId) {
-      sessionStorage.setItem('userId', userId.toString());
-      this.sidebarService.login();
+      this.sidebarService.login(this.username); // Pass the username to SidebarService
+      sessionStorage.setItem('userId', userId.toString()); // Save the user ID in sessionStorage
+      alert(`Welcome, ${this.username}!`);
     } else {
       alert('Invalid username. Please try again.');
     }
   }
+
 }
 
