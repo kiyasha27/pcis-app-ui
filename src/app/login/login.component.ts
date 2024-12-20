@@ -10,8 +10,10 @@ import { SidebarService } from 'src/app/services/sidebar/sidebar.service';
 export class LoginComponent {
   username = '';
   users = {
-    kreethram: 203,
-    admin: 1,
+    kreethram: 203, // this userId associated to the username determines if the tasks are displayed not 
+    admin: 1, //this userId associated to the username determines if the tasks are displayed not 
+    mohammad: 202,
+    kgothatso: 101
   };
 
   constructor(private sidebarService: SidebarService) {}

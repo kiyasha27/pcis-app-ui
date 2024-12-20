@@ -1,9 +1,14 @@
-<div class="header">
-    <mat-form-field>
-      <mat-label>Username</mat-label>
-      <input matInput [(ngModel)]="username" placeholder="Enter your username" />
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
-  </div>  
+<div class="login-container">
+    <mat-card class="login-card">
+      <h2 class="login-heading">Please login here</h2>
+      <div class="login-form">
+        <mat-form-field class="full-width">
+          <mat-label>Username*</mat-label>
+          <input matInput [(ngModel)]="username" placeholder="Enter your username" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="login()" class="login-button">Login</button>
+      </div>
+    </mat-card>
+  </div>
   <router-outlet></router-outlet>
   
