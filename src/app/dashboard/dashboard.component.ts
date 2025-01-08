@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 import { TaskService } from '../services/task.service';
-import { interval } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,9 +17,12 @@ export class DashboardComponent {
   // Pagination variables
   assignedTasksPageSize = 5;
   assignedTasksPageIndex = 0;
-
   completedTasksPageSize = 5;
   completedTasksPageIndex = 0;
+
+  // Total tasks
+  totalAssignedTasks = 0;
+  totalCompletedTasks = 0;
 
   constructor(private taskService: TaskService, private router: Router) {}
 
@@ -44,7 +42,8 @@ export class DashboardComponent {
     this.taskService.getTasks(false).subscribe(
       (data) => {
         console.log('Assigned Tasks:', data);
-        this.assignedTasks = data.data || []; // Safely assign tasks
+        this.assignedTasks = data.data || [];
+        this.totalAssignedTasks = data.total || 0; // Dynamically set total assigned tasks
         this.updatePagedAssignedTasks();
       },
       (error) => {
@@ -57,7 +56,8 @@ export class DashboardComponent {
     this.taskService.getTasks(true).subscribe(
       (data) => {
         console.log('Completed Tasks:', data);
-        this.completedTasks = data.data || []; // Safely assign tasks
+        this.completedTasks = data.data || [];
+        this.totalCompletedTasks = data.total || 0; // Dynamically set total completed tasks
         this.updatePagedCompletedTasks();
       },
       (error) => {
@@ -76,6 +76,11 @@ export class DashboardComponent {
     const startIndex = this.completedTasksPageIndex * this.completedTasksPageSize;
     const endIndex = startIndex + this.completedTasksPageSize;
     this.pagedCompletedTasks = this.completedTasks.slice(startIndex, endIndex);
+
+
+console.log('Total Assigned Tasks:', this.assignedTasks.length);
+console.log('Total Completed Tasks:', this.completedTasks.length);
+
   }
 
   paginateAssignedTasks(event: PageEvent): void {

@@ -43,14 +43,14 @@
     </mat-accordion>
 
     <mat-paginator
-      [length]="assignedTasks.length"
-      [pageSize]="5"
-      [pageSizeOptions]="[5, 10, 15]"
-      (page)="paginateAssignedTasks($event)">
+    [length]="totalAssignedTasks"
+    [pageSize]="assignedTasksPageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="paginateAssignedTasks($event)">
     </mat-paginator>
 
     <mat-card-footer>
-      <p>Total Assigned Tasks: {{ assignedTasks.length }}</p>
+      <p>Total Assigned Tasks: {{ totalAssignedTasks }}</p>
     </mat-card-footer>
   </mat-card-content>
 </mat-card>
@@ -100,14 +100,14 @@
     </mat-accordion>
 
     <mat-paginator
-      [length]="completedTasks.length"
-      [pageSize]="5"
-      [pageSizeOptions]="[5, 10, 15]"
-      (page)="paginateCompletedTasks($event)">
+    [length]="totalCompletedTasks"
+    [pageSize]="completedTasksPageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="paginateCompletedTasks($event)">
     </mat-paginator>
 
     <mat-card-footer>
-      <p>Total Completed Tasks: {{ completedTasks.length }}</p>
+      <p>Total Completed Tasks: {{ totalCompletedTasks }}</p>
     </mat-card-footer>
   </mat-card-content>
 </mat-card>
